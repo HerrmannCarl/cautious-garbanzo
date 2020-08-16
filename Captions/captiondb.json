@@ -1,0 +1,38 @@
+{
+	"config files":"Initial Config",
+	"captions":[
+		{
+			"id":1,
+			"photoFile":"Main-Day-1-Bayern.JPEG",
+			"caption":"I reached the border of Bavaria"
+		},
+		{
+			"id":2,
+			"photoFile":"Main-Day-1-Fields.JPEG",
+			"caption":"Scerene Scenery - Growing Barley"
+		},
+		{
+			"id":3,
+			"photoFile":"Main-Day-1-River.JPEG",
+			"caption":"The valey is beautiful here"
+		}
+	],
+	"trips":[
+		{
+			"id":1,
+			"location":"Main River",
+			"dateCode":"2020-06"
+		},
+		{
+			"id":2,
+			"location":"Mosel River",
+			"dateCode":"2020-07"
+		},
+		{
+			"id":3,
+			"location":"Rhine River",
+			"dateCode":"2020-07"
+		}
+	]
+
+}
