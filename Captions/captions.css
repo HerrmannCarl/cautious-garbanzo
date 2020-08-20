@@ -1,8 +1,4 @@
 
-body{
-	background-color: #DDDDFF;
-}
-
 .menubar{
   font-family: Helvetica, sans-serif;
   background-color:#9DC8E6;
@@ -21,4 +17,33 @@ body{
   background-color:#7DA8C6;
 }
 
-/*Used for cropping images to the right size*/
+.captionImage{
+  border-radius:10px;
+  border:1px solid grey;
+  padding:4px;
+  color:black;
+  text-align:center;
+  display:inline-block;
+  font-family: arial, sans-serif;
+  font-size: 14px;
+}
+
+.captionImage:hover{
+  background-color:lightgrey;
+}
+
+.imageContainer{
+  display:inline-block;
+}
+
+body{
+	background-color: #DDDDFF;
+}
+
+.trip{
+  display:inline-block;
+  padding:4px;
+  width:80%;
+  border:1px solid grey;
+  background-color:lightblue;
+}

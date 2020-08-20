@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src = captionScripts.js></script>
+	<html lang = "us-en">
+	<title>Bike Trips - Style 2 </title>
+	<style>
+	</style>
+</head>
+
+<link rel="stylesheet" href="captions.css">
+<body>
+
+<div class = "menubar">
+	<a href = "../home.html">Main Home</a>
+	<a href = "home.html">Project Home</a>
+</div>
+
+<p >Some text here</p>
+<div id=textHere></div>
+
+<p >More text here</p>
+<div id=textsHere></div>
+<br>
+
+<script>
+	var tag1 = "textHere";
+	var tag2 = "textsHere"
+	var caption_id="2";
+	var caption_ids=["1","2","3"];
+</script>
+
+<div>
+	<button type="button" id = "button_1" onclick=getCaption(tag1,caption_id)> One Caption </button>
+	<button type="button" id = "button_2" onclick=getCaptions(tag2,caption_ids)> Multiple Captions </button>
+</div>
+
+</body>
+</html>
+
