@@ -69,8 +69,128 @@
 			"id":9,
 			"photoFile":"Main-Day-3-Scrap.JPEG",
 			"caption":"Mannheim was not very beautiful",
-			"title":"Scrap yard, viewd from amove,",
+			"title":"Scrap yard, viewd from amove",
 			"description":"Rusty metal in a Mannheim scrap yard, viewed from above",
+			"crop":"none"
+		},
+		{
+			"id":10,
+			"photoFile":"Mosel-Day-1-Happy.JPEG",
+			"caption":"We started out in good spirits.",
+			"title":"Bike Selfie",
+			"description":"A man and a woman on bikes, taking a selfie",
+			"crop":"none"
+		},
+		{
+			"id":11,
+			"photoFile":"Mosel-Day-1-Kneipp.JPG",
+			"caption":"Exploring the the first <a href = 'https://de.wikipedia.org/wiki/Kneipp-Anlage'>kneippanlage</a>",
+			"title":"Enjoing the the Kneippanlage",
+			"description":"A smiling woman walks in a Kneippanlage",
+			"crop":"none"
+		},
+		{
+			"id":12,
+			"photoFile":"Mosel-Day-1-View.JPG",
+			"caption":"The outlook from the top of Burgruine Landshut",
+			"title":"View of the Mosel, from Burgruine Landshut",
+			"description":"View of a riverbend, from a castle top",
+			"crop":"none"
+		},
+		{
+			"id":13,
+			"photoFile":"Mosel-Day-2-Happy.JPG",
+			"caption":"Starting the day with good spirits",
+			"title":"Bike Selfie",
+			"description":"A selfie of a man and a woman riding their bikes",
+			"crop":"none"
+		},
+		{
+			"id":14,
+			"photoFile":"Mosel-Day-2-Wheat.JPEG",
+			"caption":"Making friends with a wheat field",
+			"title":"Deva in a wheat field",
+			"description":"A smiling woman crouches in a wheat field",
+			"crop":"none"
+		},
+		{
+			"id":15,
+			"photoFile":"Mosel-Day-2-Eltz.JPEG",
+			"caption":"We made it to Burg Eltz",
+			"title":"Burg Eltz, seen around sunset",
+			"description":"Burg Eltz, around sunset",
+			"crop":"none"
+		},
+		{
+			"id":16,
+			"photoFile":"Mosel-Day-3-Bridge.JPEG",
+			"caption":"A gorgeous bridge high above the river",
+			"title":"Bridge above the Mosel",
+			"description":"Bridge above the Mosel",
+			"crop":"none"
+		},
+		{
+			"id":17,
+			"photoFile":"Mosel-Day-3-Fountain.JPG",
+			"caption":"A fountain in the Koblenz Altstadt",
+			"title":"A fountain in Koblenz",
+			"description":"Water fountain in the Koblenz Altstadt",
+			"crop":"none"
+		},
+		{
+			"id":18,
+			"photoFile":"Mosel-Day-3-Train.JPEG",
+			"caption":"Bike on the train, headed home",
+			"title":"Bicycle stored in the train",
+			"description":"A bicycle in a train, hanging from a hook",
+			"crop":["-150","0","0","0"]
+		},
+		{
+			"id":19,
+			"photoFile":"Rhine-Day-1-Train.JPG",
+			"caption":"There was a lot of confusion loading up the train",
+			"title":"Boarding the train",
+			"description":"Confused German retirees boarding a train with ebikes",
+			"crop":"none"
+		},
+		{
+			"id":20,
+			"photoFile":"Rhine-Day-1-Bridge.JPG",
+			"caption":"I found a charming old wooden bridge",
+			"title":"Covered Wooden Bridge",
+			"description":"A view looking down a covered wooden bridge",
+			"crop":"none"
+		},
+		{
+			"id":21,
+			"photoFile":"Rhine-Day-1-Trees.JPG",
+			"caption":"The path amongst the trees",
+			"title":"A bike path in the forest",
+			"description":"A bike path in the forest",
+			"crop":"none"
+		},
+		{
+			"id":22,
+			"photoFile":"Rhine-Day-2-Riverbend.JPG",
+			"caption":"The view from the top of a Klettersteig near Boppard",
+			"title":"A bend in the Rhine, viewed from the bluffs",
+			"description":"A bend in the Rhine, viewed from the bluffs",
+			"crop":"none"
+		},
+		{
+			"id":23,
+			"photoFile":"Rhine-Day-2-Castle.JPG",
+			"caption":"The ruins of Castle Rheinfels",
+			"title":"View between the walls of castle ruins",
+			"description":"View between the walls of castle ruins",
+			"crop":"none"
+		},
+		{
+			"id":24,
+			"photoFile":"Rhine-Day-2-Valley.JPG",
+			"caption":"A small, steep valley, viewed from Castle Rheinfels",
+			"title":"View of a wooded valley",
+			"description":"A short, steep valley, with trees on the slopes",
 			"crop":"none"
 		}
 	],
@@ -91,7 +211,7 @@
 			"id":3,
 			"location":"Rhine River",
 			"dateCode":"2020-07",
-			"days":[]
+			"days":[7,8]
 		}
 	],
 	"days":[
@@ -121,21 +241,35 @@
 			"date":"2020-07-15",
 			"startLocation":"Trier",
 			"finishLocation":"Wolf",
-			"photos":[]
+			"photos":[10,11,12]
 		},
 		{
 			"id":5,
 			"date":"2020-07-16",
 			"startLocation":"Wolf",
 			"finishLocation":"Löf",
-			"photos":[]
+			"photos":[13,14,15]
 		},
 		{
 			"id":6,
 			"date":"2020-07-17",
 			"startLocation":"Löf",
 			"finishLocation":"Koblenz",
-			"photos":[]
+			"photos":[16,17,18]
+		},
+		{
+			"id":7,
+			"date":"2020-07-12",
+			"startLocation":"Bonn",
+			"finishLocation":"Koblenz",
+			"photos":[19,20,21]
+		},
+		{
+			"id":8,
+			"date":"2020-07-13",
+			"startLocation":"Koblenz",
+			"finishLocation":"Mainz",
+			"photos":[22,23,24]
 		}
 
 	]

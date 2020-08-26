@@ -24,18 +24,26 @@
 <div id=textHere3><p>Image info from days dropdown displayed here</p></div>
 <br>
 
+<div id=textHere6><p>Image info from trips dropdown displayed here</p></div>
+<br>
+
+
 <script>
 	var tag1 = "textHere";
 	var tag2 = "textsHere";
 	var tag3 = "textHere3";
 	var tag4 = "textHere4";
 	var tag5 = "textHere5";
+	var tag6 = "textHere6";
 	var idTag2 = "caption_id2"
 	var idTag3 = "caption_id3"
+	var idTag4 = "caption_id4"
 	var caption_id="2";
 	var caption_ids=["1","2","3"];
 	var daysVal = 1; 
 	var imageVal=1;
+	var tripsVal = 1;
+
 </script>
 
 <div>
@@ -45,13 +53,23 @@
 	<button type="button" id = "button_4" onclick=getTrips(tag2,caption_ids)> Get Trips</button><br>
 
 	<form>
+	 	<label for="trips">Trips:</label>
+	  		<select name="id" id="caption_id4" onchange="tripsVal = updateListVal('caption_id4')">
+	  			<option value="1">Main Trip</option>
+	  			<option value="2">Mosel Trip</option>
+	  			<option value="3">Rhine Trip</option>
+	 		</select>
+		<button type="button" id = "button_6" onclick=updateDaysList(idTag4,idTag3,tag6)> Get Days List</button><br>
+	</form>
+
+	<form>
 	 	<label for="days">Days:</label>
 	  		<select name="id" id="caption_id3" onchange="daysVal = updateListVal('caption_id3')">
 	  			<option value="1">Main Day 1</option>
 	  			<option value="2">Main Day 2</option>
 	  			<option value="3">Main Day 3</option>
 	 		</select>
-		<button type="button" id = "button_5" onclick=updateImagesList(idTag3,idTag2,tag5)> Get Days</button><br>
+		<button type="button" id = "button_5" onclick=updateImagesList(idTag3,idTag2,tag5)> Get Images List</button><br>
 	</form>
 
 	<form>

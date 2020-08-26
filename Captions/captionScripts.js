@@ -22,10 +22,36 @@ function getCaption(result_tag,id) {
 		var caption = JSON.parse(this.responseText);
 		var responseString = "";
 		var jsString = "";
-		jsString += "<div class = 'captionImage'>\n";
+    var cropString = "";
+    crop_vals = JSON.parse(caption.crop_vals)
+
+    console.log("----")
+    console.log("beginning crop test")
+    console.log("Is crop_vals equal to 'none'? "+ (crop_vals == "none"))
+
+   if(crop_vals != "none"){
+      console.log("Cropping right here");
+      console.log("Crop vals: " + crop_vals);
+      console.log("type of crop_vals: " + typeof crop_vals);
+      console.log("length of crop_vals: " + crop_vals.length)
+      cropString += "style = \"margin:";
+      for (i=0;i<crop_vals.length;i++){
+        cropString += " " + crop_vals[i] + "px";
+      }
+      cropString += ";\"";
+      console.log("cropstring is: ")
+      console.log(cropString)
+    }
+
+    jsString += "<div class = 'captionImage'>\n";
 		jsString += caption.caption + "<br>\n";
+    
 		jsString += '<a href=' + caption.photoFile + ' target="_blank">';
-		jsString +=	'<img src = ' + caption.photoFile + ' title = \"' + caption.title + '\" alt = \"' + caption.description + '\" width = "400">\n';
+    if(crop_vals != "none"){jsString += '<div class = "crop">';}
+		jsString +=	'<img src = ' + caption.photoFile + ' title = \"' + caption.title + '\" alt = \"' + caption.description + '\" ';
+    jsString += cropString;
+    jsString += '>\n';
+    if(crop_vals != "none"){jsString += '</div>';}
 		jsString += '</a></div>\n';
 
       // document.getElementById(result_tag).innerHTML = "Sucess Updating!\n"+responseString + "<br>" + jsString;
@@ -135,4 +161,33 @@ function updateImagesList(sourceListID,destListID,ts_tag) {
 
 }
 
+function updateDaysList(sourceListID,destListID,ts_tag) {
+  var newElements = "";
+  var parentElement = document.getElementById(destListID);
+  var daysList=[1,2,3];
+  var trip_id;
 
+  trip_id = updateListVal(sourceListID);
+
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      var jsonResponse = JSON.parse(this.responseText);
+      var daysList = JSON.parse(jsonResponse.days);
+
+
+      //clear the existing elements
+      parentElement.innerHTML = "";
+
+      for (i = 0; i < daysList.length; i++) {
+        newElements+="<option value=\"" + daysList[i] + "\">" + "Day "+ (i+1) + "</option>" ;
+      }
+
+      document.getElementById(destListID).innerHTML = newElements //add options to target dropdown
+      daysVal = updateListVal(destListID)//update selection in target dropdown
+    }
+  }   
+  xhttp.open("GET", "daysTrips.php?id="+trip_id, true);
+  xhttp.send();
+
+}
