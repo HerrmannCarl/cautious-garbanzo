@@ -41,7 +41,7 @@
 	<button type="button" id = "button_2" onclick=getCaptions(tag2,caption_ids)> Multiple Captions </button><br>
 
 	<button type="button" id = "button_6" onclick=genDBs(db_resultName)> Re-Initilize the Database </button><span id = db_result></span><br>
-	<button type="button" id = "button_3" onclick=getTrips(idTag4)> Get Trips</button><br>
+	<button type="button" id = "button_3" onclick=getTrips(idTag4)> Get Trips List</button><br>
 
 	<form>
 	 	<label for="trips">Trips:</label>
@@ -50,7 +50,8 @@
 	  			<option value="2">Mosel Trip</option>
 	  			<option value="3">Rhine Trip</option>
 	 		</select>
-		<button type="button" id = "button_4" onclick=updateDaysList(idTag4,idTag3)> Get Days List</button><br>
+		<button type="button" id = "button_4" onclick=updateDaysList(idTag4,idTag3)> Get Days List</button>
+	 	<button type="button" id = "button_8" onclick=genDBs(dbresultName)>Show Trips</button><br>
 	</form>
 
 	<form>
@@ -60,7 +61,8 @@
 	  			<option value="2">Main Day 2</option>
 	  			<option value="3">Main Day 3</option>
 	 		</select>
-		<button type="button" id = "button_5" onclick=updateImagesList(idTag3,idTag2)> Get Images List</button><br>
+		<button type="button" id = "button_5" onclick=updateImagesList(idTag3,idTag2)> Get Images List</button>
+	 	<button type="button" id = "button_7" onclick=genDBs(dbresultName)>Show Days</button><br>
 	</form>
 
 	<form>
@@ -70,7 +72,7 @@
 	  			<option value="2">Image 2</option>
 	  			<option value="3">Image 3</option>
 	 		</select>
-	 	<button type="button" id = "button_6" onclick=getCaption(tag3,imageVal)> Get Image</button><br>
+	 	<button type="button" id = "button_6" onclick=getCaption(tag3,imageVal)>Show Image</button><br>
 	</form>
 </div>
 
