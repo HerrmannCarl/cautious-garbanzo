@@ -1,6 +1,6 @@
 function genDBs(result_tag) {
   var xhttp = new XMLHttpRequest();
-  document.getElementById("button_1").style = "background-color:green" ;
+  document.getElementById(result_tag).style = "background-color:lightgreen" ;
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
      document.getElementById(result_tag).innerHTML = "Database initilized";
@@ -193,3 +193,12 @@ function getTrips(destListID) {
 }
 
 
+function genTrip(result_tag,tripsVal){
+  var update_string = "Updating the trip, I promise...";
+  document.getElementById(result_tag).innerHTML = update_string;
+}
+
+function genDay(result_tag,daysVal){
+  var update_string = "Updating the day, I promise...";
+  document.getElementById(result_tag).innerHTML = update_string;
+}

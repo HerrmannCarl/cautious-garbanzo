@@ -12,7 +12,6 @@
   border-radius: 4px;
 }
 
-
 .menubar a:hover{
   background-color:#7DA8C6;
 }
@@ -30,8 +29,9 @@
 
 .captionImage img {
     width: 300px;
+    padding:4px;
+    border-radius:10px;
 }
-
 
 .captionImage:hover{
   background-color:lightgrey;
@@ -54,11 +54,15 @@ body{
 }
 
 .crop {
+    margin:4px;
     width: 300px;
     height: 225px;
     overflow: hidden;
+    border-radius:10px;
 }
 
 .crop img {
+    padding:0px;
     width: 300px;
+    border-radius:10px;
 }

@@ -16,15 +16,19 @@
 	<a href = "home.html">Project Home</a>
 </div>
 
-<div id=textHere1><p>Single image displayed here</p></div>
-<div id=textHere2><p>Multiple images displayed here</p></div>
-<div id=textHere3><p>Selection from below displayed here</p></div>
+<div id=textHere1>Single image displayed here</div>
+<div id=textHere2>Multiple images displayed here</div>
+<div id=textHere3>Single Image displayed here</div>
+<div id=textHere4>Full Day displayed here</div>
+<div id=textHere5>Full Trip displayed here</div>
 <br>
 
 <script>
 	var tag1 = "textHere1";
 	var tag2 = "textHere2";
 	var tag3 = "textHere3";
+	var tag4 = "textHere4";
+	var tag5 = "textHere5";
 	var idTag2 = "caption_id2"
 	var idTag3 = "caption_id3"
 	var idTag4 = "caption_id4"
@@ -33,13 +37,15 @@
 	var daysVal = 1; 
 	var imageVal=1;
 	var tripsVal = 1;
-
+	var db_resultName = "db_result"
 </script>
 
 <div>
 	<button type="button" id = "button_1" onclick=getCaption(tag1,caption_id)> One Caption </button> <br>
 	<button type="button" id = "button_2" onclick=getCaptions(tag2,caption_ids)> Multiple Captions </button><br>
-	<button type="button" id = "button_3" onclick=getTrips(idTag4)> Get Trips</button><br>
+
+	<button type="button" id = "button_6" onclick=genDBs(db_resultName)> Re-Initilize the Database </button><span id = db_result></span><br>
+	<button type="button" id = "button_3" onclick=getTrips(idTag4)> Get Trips List</button><br>
 
 	<form>
 	 	<label for="trips">Trips:</label>
@@ -48,7 +54,8 @@
 	  			<option value="2">Mosel Trip</option>
 	  			<option value="3">Rhine Trip</option>
 	 		</select>
-		<button type="button" id = "button_4" onclick=updateDaysList(idTag4,idTag3)> Get Days List</button><br>
+		<button type="button" id = "button_4" onclick=updateDaysList(idTag4,idTag3)> Get Days List</button>
+	 	<button type="button" id = "button_8" onclick=genTrip(tag5,tripsVal)>Show Trips</button><br>
 	</form>
 
 	<form>
@@ -58,7 +65,8 @@
 	  			<option value="2">Main Day 2</option>
 	  			<option value="3">Main Day 3</option>
 	 		</select>
-		<button type="button" id = "button_5" onclick=updateImagesList(idTag3,idTag2)> Get Images List</button><br>
+		<button type="button" id = "button_5" onclick=updateImagesList(idTag3,idTag2)> Get Images List</button>
+	 	<button type="button" id = "button_7" onclick=genDay(tag4,daysVal)>Show Days</button><br>
 	</form>
 
 	<form>
@@ -68,7 +76,7 @@
 	  			<option value="2">Image 2</option>
 	  			<option value="3">Image 3</option>
 	 		</select>
-	 	<button type="button" id = "button_6" onclick=getCaption(tag3,imageVal)> Get Image</button><br>
+	 	<button type="button" id = "button_6" onclick=getCaption(tag3,imageVal)>Show Image</button><br>
 	</form>
 </div>
 

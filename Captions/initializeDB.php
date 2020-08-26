@@ -62,6 +62,8 @@ $sql = "CREATE TABLE Trips (
 id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 location VARCHAR(50) NOT NULL,
 name VARCHAR(100) NOT NULL,
+description VARCHAR(240) NOT NULL,
+preview_photo int(5) NOT NULL,
 datecode VARCHAR(240) NOT NULL,
 days VARCHAR(100) NOT NULL,
 create_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
@@ -78,6 +80,7 @@ id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 tdate VARCHAR(50) NOT NULL,
 startLocation VARCHAR(100) NOT NULL,
 finishLocation VARCHAR(100) NOT NULL,
+description VARCHAR(240) NOT NULL,
 photos VARCHAR(100) NOT NULL,
 create_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 )";
@@ -100,7 +103,7 @@ echo "<br>\n";
 
 // var_dump($decoded_data);
 
-$stmt = $conn->prepare("INSERT INTO Captions (photoFile, caption, title, description,crop_vals) VALUES (?, ?, ?, ?,?)");
+$stmt = $conn->prepare("INSERT INTO Captions (photoFile, caption, title, description, crop_vals) VALUES (?, ?, ?, ?,?)");
 $stmt->bind_param("sssss", $photoFile, $caption, $title, $description, $crop_vals);
 
 foreach ($decoded_json["captions"] as $iter) {
@@ -121,14 +124,26 @@ $decoded_json = json_decode($json_string, true);
 $decoded_data = $decoded_json["trips"];
 
 // var_dump($decoded_data);
-$stmt = $conn->prepare("INSERT INTO Trips (name,location, datecode, days) VALUES (?, ?, ?, ?)");
-$stmt->bind_param("ssss", $trip_name,$location, $datecode, $days);
+$stmt = $conn->prepare("INSERT INTO Trips (name, location, description, preview_photo, datecode, days) VALUES (?, ?, ?, ?, ?, ?)");
+$stmt->bind_param("sssiss", $trip_name, $location, $description, $preview_photo, $datecode, $days);
+
+echo "-------<br>\n";
+echo "Starting trips insert <br>\n";
 
 foreach ($decoded_data as $iter) {
   $trip_name = $iter["name"];
   $location = $iter["location"];
+  $description = $iter["description"];
+  $preview_photo= $iter["previewPhoto"];
   $datecode = $iter["dateCode"];
   $days = json_encode($iter["days"]);
+  echo "--<br>\n";
+  echo "trip_name: ". $trip_name . "<br>\n";
+  echo "location: ". $location . "<br>\n";
+  echo "description: ". $description . "<br>\n";
+  echo "preview_photo: ". $preview_photo . "<br>\n";
+  echo "datecode: ". $datecode . "<br>\n";
+  echo "days: ". $days . "<br>\n";
   $stmt->execute();
 }
 
@@ -141,22 +156,24 @@ $decoded_json = json_decode($json_string, true);
 $decoded_data = $decoded_json["days"];
 
 // var_dump($decoded_data);
-$stmt = $conn->prepare("INSERT INTO Days (tdate, startLocation, finishLocation, photos) VALUES (?, ?, ?, ?)");
-$stmt->bind_param("ssss", $tdate, $startLocation,$finishLocation,$photos);
+$stmt = $conn->prepare("INSERT INTO Days (tdate, startLocation, finishLocation, description, photos) VALUES (?, ?, ?, ?, ?)");
+$stmt->bind_param("sssss", $tdate, $startLocation, $finishLocation, $description, $photos);
 
-echo "-------<br>\n";
-echo "Starting days insert <br>\n";
+// echo "-------<br>\n";
+// echo "Starting days insert <br>\n";
 
 foreach ($decoded_data as $iter) {
   $tdate = $iter["date"];
   $startLocation = $iter["startLocation"];
   $finishLocation = $iter["finishLocation"];
+  $description = $iter["description"];
   $photos = json_encode($iter["photos"]);
   $stmt->execute();
-  echo "-date: " . $tdate . "<br>\n";
+/*  echo "-date: " . $tdate . "<br>\n";
   echo "photos list: " . $photos . "<br>\n";
   echo "start location: " . $startLocation . "<br>\n";
   echo "finish location: " . $finishLocation . "<br>\n";
+  echo "description: " . $description . "<br>\n";*/
 }
 
 echo "-------<br>\n";
@@ -168,7 +185,7 @@ $sql = "SELECT * FROM Captions ORDER BY create_date";
 $result = $conn->query($sql);
 
 //print results
-echo "printing caption results<br>";
+echo "--Printing caption results<br>";
 if ($result->num_rows > 0) {
   // output data of each row
   while($row = $result->fetch_assoc()) {
@@ -183,11 +200,11 @@ $sql = "SELECT * FROM Trips ORDER BY create_date";
 $result = $conn->query($sql);
 
 //print results
-echo "Printing trip results<br>\n";
+echo "--Printing trip results<br>\n";
 if ($result->num_rows > 0) {
   // output data of each row
   while($row = $result->fetch_assoc()) {
-    echo "id: ". $row["id"] . " - create_date: " . $row["create_date"]. " - location: " . $row["location"]. " - date code: " . $row["datecode"]. "<br>";
+    echo "id: ". $row["id"] . " - create_date: " . $row["create_date"]. " - location: " . $row["location"]. " - date code: " . $row["datecode"]. " - preview_photo: " . $row["preview_photo"]." - description: " . $row["description"]."<br>";
   }
 } else {
   echo "0 results<br>";
@@ -198,7 +215,7 @@ $sql = "SELECT * FROM Days ORDER BY create_date";
 $result = $conn->query($sql);
 
 //print results
-echo "Printing Day results<br>\n";
+echo "--Printing Day results<br>\n";
 if ($result->num_rows > 0) {
   // output data of each row
   while($row = $result->fetch_assoc()) {
