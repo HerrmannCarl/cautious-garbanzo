@@ -192,6 +192,30 @@
 			"title":"View of a wooded valley",
 			"description":"A short, steep valley, with trees on the slopes",
 			"crop":"none"
+		},
+		{
+			"id":25,
+			"photoFile":"Rhine-Day-2-Selfie.JPG",
+			"caption":"View of the rhine, from Burg Rhinefels",
+			"title":"View of the Rhine valley from above",
+			"description":"Selfie of Carl, with the Rhine valley in the background",
+			"crop":"none"
+		},
+		{
+			"id":26,
+			"photoFile":"Mosel-Day-2-Beautiful.JPEG",
+			"caption":"Vineyards along the banks of the Mosel",
+			"title":"View of the banks of the Mosel",
+			"description":"Vineyards along the steep banks of the Mosel",
+			"crop":"none"
+		},
+		{
+			"id":27,
+			"photoFile":"Main-Day-2-Frankfurt.JPEG",
+			"caption":"The Frankfurt skyline, from the banks of the Main",
+			"title":"The Frankfurt Skyline",
+			"description":"The Furt skyline, seen from the banks of the Main",
+			"crop":"none"
 		}
 	],
 	"trips":[
@@ -200,6 +224,8 @@
 			"name":"Main 2020",
 			"location":"Main River",
 			"dateCode":"2020-06",
+			"description":"The Main river flows through northern Bavaria into Hessen, where it meets the Rhine just past Frankfurt",
+			"previewPhoto":27,
 			"days":[1,2,3]
 		},
 		{
@@ -207,6 +233,8 @@
 			"name":"Mosel 2020",
 			"location":"Mosel River",
 			"dateCode":"2020-07",
+			"description":"The Mosel is a tributary of the Rhine - it flows from France, thorough Luxembourg, and then Germany, where it meets the Rhine at Koblenz",
+			"previewPhoto":26,
 			"days":[4,5,6]
 		},
 		{
@@ -214,6 +242,8 @@
 			"name":"Rhine 2020",
 			"location":"Rhine River",
 			"dateCode":"2020-07",
+			"description":"Between Mainz and Bonn, the Rhine passes through some steep valleys - the bluffs are feature a lot of castles",
+			"previewPhoto":25,
 			"days":[7,8]
 		}
 	],
@@ -223,6 +253,7 @@
 			"date":"2020-06-15",
 			"startLocation":"Würzburg",
 			"finishLocation":"Wertheim",
+			"description":"The first day, I rode from Würzburg to Wertheim",
 			"photos":[1,2,3]
 		},
 		{
@@ -230,6 +261,7 @@
 			"date":"2020-06-16",
 			"startLocation":"Wertheim",
 			"finishLocation":"Frankfurt",
+			"description":"The valley broadened out as I road through Aschaffenburg into Frankfurt",
 			"photos":[4,5,6]
 		},
 		{
@@ -237,6 +269,7 @@
 			"date":"2020-06-17",
 			"startLocation":"Frankfurt",
 			"finishLocation":"Heidelberg",
+			"description":"The last day, I road along the Main to Mainz, then took the Rhine to where the Neckar joins it, and rode up to Heidelberg",
 			"photos":[7,8,9]
 		},		
 		{
@@ -244,6 +277,7 @@
 			"date":"2020-07-15",
 			"startLocation":"Trier",
 			"finishLocation":"Wolf",
+			"description":"The first day, we took our bikes on the train from Koblenz to Trier, and rode to Wolf from there",
 			"photos":[10,11,12]
 		},
 		{
@@ -251,6 +285,7 @@
 			"date":"2020-07-16",
 			"startLocation":"Wolf",
 			"finishLocation":"Löf",
+			"description":"On the Second day, we rode onwards, and got a little tired in the sun",
 			"photos":[13,14,15]
 		},
 		{
@@ -258,6 +293,7 @@
 			"date":"2020-07-17",
 			"startLocation":"Löf",
 			"finishLocation":"Koblenz",
+			"description":"On the Third day, we returned a rental bike, played on a rope swing, and walked around Koblenz",
 			"photos":[16,17,18]
 		},
 		{
@@ -265,6 +301,7 @@
 			"date":"2020-07-12",
 			"startLocation":"Bonn",
 			"finishLocation":"Koblenz",
+			"description":"The first day, I took the train to Bonn, and rode my bike south to Koblenz",
 			"photos":[19,20,21]
 		},
 		{
@@ -272,6 +309,7 @@
 			"date":"2020-07-13",
 			"startLocation":"Koblenz",
 			"finishLocation":"Mainz",
+			"description":"I hiked up the bluffs a lot on the second day - the views were irresistable",
 			"photos":[22,23,24]
 		}
 

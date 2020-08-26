@@ -16,11 +16,11 @@
 	<a href = "home.html">Project Home</a>
 </div>
 
-<div id=textHere1><p>Single image displayed here</p></div>
-<div id=textHere2><p>Multiple images displayed here</p></div>
-<div id=textHere3><p>Images from below displayed here</p></div>
-<div id=textHere4><p>Days from below displayed here</p></div>
-<div id=textHere5><p>Trips from below displayed here</p></div>
+<div id=textHere1>Single image displayed here</div>
+<div id=textHere2>Multiple images displayed here</div>
+<div id=textHere3>Single Image displayed here</div>
+<div id=textHere4>Full Day displayed here</div>
+<div id=textHere5>Full Trip displayed here</div>
 <br>
 
 <script>
@@ -55,7 +55,7 @@
 	  			<option value="3">Rhine Trip</option>
 	 		</select>
 		<button type="button" id = "button_4" onclick=updateDaysList(idTag4,idTag3)> Get Days List</button>
-	 	<button type="button" id = "button_8" onclick=genDBs(dbresultName)>Show Trips</button><br>
+	 	<button type="button" id = "button_8" onclick=genTrip(tag5,tripsVal)>Show Trips</button><br>
 	</form>
 
 	<form>
@@ -66,7 +66,7 @@
 	  			<option value="3">Main Day 3</option>
 	 		</select>
 		<button type="button" id = "button_5" onclick=updateImagesList(idTag3,idTag2)> Get Images List</button>
-	 	<button type="button" id = "button_7" onclick=genDBs(dbresultName)>Show Days</button><br>
+	 	<button type="button" id = "button_7" onclick=genDay(tag4,daysVal)>Show Days</button><br>
 	</form>
 
 	<form>

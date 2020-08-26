@@ -193,3 +193,12 @@ function getTrips(destListID) {
 }
 
 
+function genTrip(result_tag,tripsVal){
+  var update_string = "Updating the trip, I promise...";
+  document.getElementById(result_tag).innerHTML = update_string;
+}
+
+function genDay(result_tag,daysVal){
+  var update_string = "Updating the day, I promise...";
+  document.getElementById(result_tag).innerHTML = update_string;
+}
