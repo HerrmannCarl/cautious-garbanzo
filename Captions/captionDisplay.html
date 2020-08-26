@@ -16,25 +16,15 @@
 	<a href = "home.html">Project Home</a>
 </div>
 
-<div id=textHere><p>Single image displayed here</p></div>
-
-<div id=textsHere><p>Multiple images displayed here</p></div>
+<div id=textHere1><p>Single image displayed here</p></div>
+<div id=textHere2><p>Multiple images displayed here</p></div>
+<div id=textHere3><p>Selection from below displayed here</p></div>
 <br>
-
-<div id=textHere3><p>Image info from days dropdown displayed here</p></div>
-<br>
-
-<div id=textHere6><p>Image info from trips dropdown displayed here</p></div>
-<br>
-
 
 <script>
-	var tag1 = "textHere";
-	var tag2 = "textsHere";
+	var tag1 = "textHere1";
+	var tag2 = "textHere2";
 	var tag3 = "textHere3";
-	var tag4 = "textHere4";
-	var tag5 = "textHere5";
-	var tag6 = "textHere6";
 	var idTag2 = "caption_id2"
 	var idTag3 = "caption_id3"
 	var idTag4 = "caption_id4"
@@ -49,8 +39,7 @@
 <div>
 	<button type="button" id = "button_1" onclick=getCaption(tag1,caption_id)> One Caption </button> <br>
 	<button type="button" id = "button_2" onclick=getCaptions(tag2,caption_ids)> Multiple Captions </button><br>
-	<button type="button" id = "button_3" onclick=getYears(tag2,caption_ids)> Get Years</button><br>
-	<button type="button" id = "button_4" onclick=getTrips(tag2,caption_ids)> Get Trips</button><br>
+	<button type="button" id = "button_3" onclick=getTrips(idTag4)> Get Trips</button><br>
 
 	<form>
 	 	<label for="trips">Trips:</label>
@@ -59,7 +48,7 @@
 	  			<option value="2">Mosel Trip</option>
 	  			<option value="3">Rhine Trip</option>
 	 		</select>
-		<button type="button" id = "button_6" onclick=updateDaysList(idTag4,idTag3,tag6)> Get Days List</button><br>
+		<button type="button" id = "button_4" onclick=updateDaysList(idTag4,idTag3)> Get Days List</button><br>
 	</form>
 
 	<form>
@@ -69,7 +58,7 @@
 	  			<option value="2">Main Day 2</option>
 	  			<option value="3">Main Day 3</option>
 	 		</select>
-		<button type="button" id = "button_5" onclick=updateImagesList(idTag3,idTag2,tag5)> Get Images List</button><br>
+		<button type="button" id = "button_5" onclick=updateImagesList(idTag3,idTag2)> Get Images List</button><br>
 	</form>
 
 	<form>
@@ -81,9 +70,13 @@
 	 		</select>
 	 	<button type="button" id = "button_6" onclick=getCaption(tag3,imageVal)> Get Image</button><br>
 	</form>
-
 </div>
 
+<script>
+	document.getElementById("button_3").click()
+	document.getElementById("button_4").click()
+	document.getElementById("button_5").click()
+</script>
 
 </body>
 </html>
