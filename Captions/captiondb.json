@@ -4,35 +4,140 @@
 		{
 			"id":1,
 			"photoFile":"Main-Day-1-Bayern.JPEG",
-			"caption":"I reached the border of Bavaria"
+			"caption":"I reached the border of Bavaria",
+			"title":"Stone marks the border",
+			"description":"Bike is leaned up against a large stone, marking the borer",
+			"crop":["-150","0","0","0"]
 		},
 		{
 			"id":2,
 			"photoFile":"Main-Day-1-Fields.JPEG",
-			"caption":"Scerene Scenery - Growing Barley"
+			"caption":"Barley grows under the cloudy sky",
+			"title":"Barey fields in the river valley",
+			"description":"Barley Fields grow next to the river, under a cloudy sky",
+			"crop":"none"
 		},
 		{
 			"id":3,
 			"photoFile":"Main-Day-1-River.JPEG",
-			"caption":"The valey is beautiful here"
+			"caption":"The valey is beautiful here",
+			"title":"Bike trail along the river",
+			"description":"View of bike trail along the river Main",
+			"crop":"none"
+		},
+		{
+			"id":4,
+			"photoFile":"Main-Day-2-Ships.JPEG",
+			"caption":"We saw a small shipyard along the river",
+			"title":"Shipyard along the river Main",
+			"description":"Shipyard along the river Main",
+			"crop":"none"
+		},
+		{
+			"id":5,
+			"photoFile":"Main-Day-2-Clouds.JPEG",
+			"caption":"The sky was beautiful the whole trip",
+			"title":"Clouds over wheat fields",
+			"description":"Clouds over wheat fields in a river valley",
+			"crop":"none"
+		},
+		{
+			"id":6,
+			"photoFile":"Main-Day-2-Shade.JPEG",
+			"caption":"The shade trees along this path were very welcome",
+			"title":"Bike path shaded by trees",
+			"description":"A bike bath shaded by a row of trees on either side",
+			"crop":"none"
+		},
+		{
+			"id":7,
+			"photoFile":"Main-Day-3-Clouds.JPEG",
+			"caption":"The Rhine river valley is much wider than the Main",
+			"title":"A bike path next to fields",
+			"description":"A bike path next to fields",
+			"crop":"none"
+		},
+		{
+			"id":8,
+			"photoFile":"Main-Day-3-View.JPEG",
+			"caption":"The landscape views were amazing",
+			"title":"Wheat fields on a sunny day",
+			"description":"Wheat fields on a sunny day",
+			"crop":"none"
+		},
+		{
+			"id":9,
+			"photoFile":"Main-Day-3-Scrap.JPEG",
+			"caption":"Mannheim was not very beautiful",
+			"title":"Scrap yard, viewd from amove,",
+			"description":"Rusty metal in a Mannheim scrap yard, viewed from above",
+			"crop":"none"
 		}
 	],
 	"trips":[
 		{
 			"id":1,
 			"location":"Main River",
-			"dateCode":"2020-06"
+			"dateCode":"2020-06",
+			"days":[1,2,3]
 		},
 		{
 			"id":2,
 			"location":"Mosel River",
-			"dateCode":"2020-07"
+			"dateCode":"2020-07",
+			"days":[4,5,6]
 		},
 		{
 			"id":3,
 			"location":"Rhine River",
-			"dateCode":"2020-07"
+			"dateCode":"2020-07",
+			"days":[]
 		}
+	],
+	"days":[
+		{
+			"id":1,
+			"date":"2020-06-15",
+			"startLocation":"Würzburg",
+			"finishLocation":"Wertheim",
+			"photos":[1,2,3]
+		},
+		{
+			"id":2,
+			"date":"2020-06-16",
+			"startLocation":"Wertheim",
+			"finishLocation":"Frankfurt",
+			"photos":[4,5,6]
+		},
+		{
+			"id":3,
+			"date":"2020-06-17",
+			"startLocation":"Frankfurt",
+			"finishLocation":"Heidelberg",
+			"photos":[7,8,9]
+		},		
+		{
+			"id":4,
+			"date":"2020-07-15",
+			"startLocation":"Trier",
+			"finishLocation":"Wolf",
+			"photos":[]
+		},
+		{
+			"id":5,
+			"date":"2020-07-16",
+			"startLocation":"Wolf",
+			"finishLocation":"Löf",
+			"photos":[]
+		},
+		{
+			"id":6,
+			"date":"2020-07-17",
+			"startLocation":"Löf",
+			"finishLocation":"Koblenz",
+			"photos":[]
+		}
+
 	]
 
 }

@@ -9,3 +9,130 @@ function genDBs(result_tag) {
   xhttp.open("GET", "initializeDB.php", true);
   xhttp.send();
 }
+
+// function captionText(id){
+// 	var
+// }
+
+function getCaption(result_tag,id) {
+  var xhttp = new XMLHttpRequest();
+  document.getElementById(result_tag).innerHTML = "Trying to update...";
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+		var caption = JSON.parse(this.responseText);
+		var responseString = "";
+		var jsString = "";
+		jsString += "<div class = 'captionImage'>\n";
+		jsString += caption.caption + "<br>\n";
+		jsString += '<a href=' + caption.photoFile + ' target="_blank">';
+		jsString +=	'<img src = ' + caption.photoFile + ' title = \"' + caption.title + '\" alt = \"' + caption.description + '\" width = "400">\n';
+		jsString += '</a></div>\n';
+
+      // document.getElementById(result_tag).innerHTML = "Sucess Updating!\n"+responseString + "<br>" + jsString;
+    document.getElementById(result_tag).innerHTML = jsString;
+    }
+  };
+  // document.getElementById(result_tag).innerHTML = "imageCaptions.php?id="+id;
+  xhttp.open("GET", "imageCaptions.php?id="+id, true);
+  xhttp.send();
+}
+
+function getCaptions(result_tag,ids) {
+  var new_str = ""
+  var new_strs = [];
+  new_str += "<div class = trip>";
+  for (i = 0; i < ids.length; i++) {
+  	var current_tag="photo_"+ids[i];
+    new_str += "<div id="+ current_tag + ' class="imageContainer" ></div>';
+    new_strs.push(current_tag);
+  }
+  new_str += "</div>";
+  document.getElementById(result_tag).innerHTML=new_str;
+  
+  console.log("new_strings is: "+ new_strs)
+  for (i=0;i<new_strs.length;i++){
+  	tag = new_strs[i];
+  	var tag_id = ids[i];
+  	getCaption(tag,tag_id);
+  }
+}
+
+function updateListVal(target_id){
+  var updateObj = document.getElementById(target_id);
+  var target = updateObj.options[updateObj.selectedIndex].value;
+  return target;
+}
+
+function getImagesList(day_id){
+  // return testytest;
+
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      var jsonResponse = JSON.parse(this.responseText);
+      var photo_list;
+      photo_list = JSON.parse(jsonResponse.photos);
+      return photo_list;
+    }
+  }   
+  xhttp.open("GET", "imagesDays.php?id="+day_id, true);
+  xhttp.send();
+}
+
+function getImages(result_tag,id) {
+  var xhttp = new XMLHttpRequest();
+  document.getElementById(result_tag).innerHTML = "Trying to update...<br>\n";
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+    var jsonResponse = JSON.parse(this.responseText);
+    var responseString = "";
+    var jsString = "";
+    jsString += "Trying Update. Really.  I'm trying<br>\n";
+    jsString += "id: " + jsonResponse.id + "<br>\n";
+    jsString += "date: " + jsonResponse.tdate + "<br>\n";
+    jsString += "startLocation: " + jsonResponse.startLocation + "<br>\n";
+    jsString += "finishLocation: " + jsonResponse.finishLocation + "<br>\n";
+    jsString += "photos: " + JSON.parse(jsonResponse.photos) + "<br>\n";
+
+      // document.getElementById(result_tag).innerHTML = "Sucess Updating!\n"+responseString + "<br>" + jsString;
+    document.getElementById(result_tag).innerHTML = jsString;
+    return false;
+    }
+  };
+  // document.getElementById(result_tag).innerHTML = "imageCaptions.php?id="+id;
+  xhttp.open("GET", "imagesDays.php?id="+id, true);
+  xhttp.send();
+}
+
+function updateImagesList(sourceListID,destListID,ts_tag) {
+  var newElements = "";
+  var parentElement = document.getElementById(destListID);
+  var imagesList=[1,2,3];
+  var day_id;
+
+  day_id = updateListVal(sourceListID);
+
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      var jsonResponse = JSON.parse(this.responseText);
+      var imagesList = JSON.parse(jsonResponse.photos);
+
+
+      //clear the existing elements
+      parentElement.innerHTML = "";
+
+      for (i = 0; i < imagesList.length; i++) {
+        newElements+="<option value=\"" + imagesList[i] + "\">" + "Image "+ (i+1) + "</option>" ;
+      }
+
+      document.getElementById(destListID).innerHTML = newElements //add options to target dropdown
+      imageVal = updateListVal(destListID)//update selection in target dropdown
+    }
+  }   
+  xhttp.open("GET", "imagesDays.php?id="+day_id, true);
+  xhttp.send();
+
+}
+
+

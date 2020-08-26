@@ -33,11 +33,22 @@ if ($conn->query($sql) === TRUE) {
   echo "Error deleting table: " . $conn->error . "<br>";
 }
 
+// Clear sql table for Days
+$sql = "DROP TABLE Days";
+if ($conn->query($sql) === TRUE) {
+  echo "Table Days deleted successfully<br>";
+} else {
+  echo "Error deleting table: " . $conn->error . "<br>";
+}
+
 // sql to create table for Captions
 $sql = "CREATE TABLE Captions (
 id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 photoFile VARCHAR(50) NOT NULL,
 caption VARCHAR(240) NOT NULL,
+title VARCHAR(240) NOT NULL,
+description VARCHAR(240) NOT NULL,
+crop_vals VARCHAR(240) NOT NULL,
 create_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 )";
 if ($conn->query($sql) === TRUE) {
@@ -54,36 +65,60 @@ datecode VARCHAR(240) NOT NULL,
 create_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 )";
 if ($conn->query($sql) === TRUE) {
-  echo "Table trips created successfully<br>";
+  echo "Table Trips created successfully<br>";
 } else {
   echo "Error creating table: " . $conn->error . "<br>";
 }
 
+// sql to create table "trips"
+$sql = "CREATE TABLE Days (
+id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+tdate VARCHAR(50) NOT NULL,
+startLocation VARCHAR(100) NOT NULL,
+finishLocation VARCHAR(100) NOT NULL,
+photos VARCHAR(100) NOT NULL,
+create_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+)";
+if ($conn->query($sql) === TRUE) {
+  echo "Table Days created successfully<br>";
+} else {
+  echo "Error creating table: " . $conn->error . "<br>";
+}
+
+
+////Insert "captions" data into database
 //Get config data out of json for "captions"
 $json_string = file_get_contents("captiondb.json");
 $decoded_json = json_decode($json_string, true);
 $decoded_data = $decoded_json["captions"];
 
+echo "decoded json: " . $decoded_json["captions"][0]."<br>";
+var_dump($decoded_json["captions"][0]["crop"]);
+echo "<br>\n";
+
 // var_dump($decoded_data);
 
-$stmt = $conn->prepare("INSERT INTO Captions (photoFile, caption) VALUES (?, ?)");
-$stmt->bind_param("ss", $photoFile, $caption);
+$stmt = $conn->prepare("INSERT INTO Captions (photoFile, caption, title, description,crop_vals) VALUES (?, ?, ?, ?,?)");
+$stmt->bind_param("sssss", $photoFile, $caption, $title, $description, $crop_vals);
 
 foreach ($decoded_json["captions"] as $iter) {
   $photoFile = $iter["photoFile"];
   $caption = $iter["caption"];
+  $title = $iter["title"];
+  $description = $iter["description"];
+  $crop_vals = json_encode($iter["crop"]);
   $stmt->execute();
 }
 
 $stmt->close();
 
+////Insert "trips" data into database
 //Get config data out of json for "trips"
 $json_string = file_get_contents("captiondb.json");
 $decoded_json = json_decode($json_string, true);
 $decoded_data = $decoded_json["trips"];
 
 // var_dump($decoded_data);
-
 $stmt = $conn->prepare("INSERT INTO Trips (location, dateCode) VALUES (?, ?)");
 $stmt->bind_param("ss", $location, $datecode);
 
@@ -95,7 +130,36 @@ foreach ($decoded_data as $iter) {
 
 $stmt->close();
 
-//Check that the captions data is as it should be
+////Insert "days" data into database
+//Get config data out of json for "trips"
+$json_string = file_get_contents("captiondb.json");
+$decoded_json = json_decode($json_string, true);
+$decoded_data = $decoded_json["days"];
+
+// var_dump($decoded_data);
+$stmt = $conn->prepare("INSERT INTO Days (tdate, startLocation, finishLocation, photos) VALUES (?, ?, ?, ?)");
+$stmt->bind_param("ssss", $tdate, $startLocation,$finishLocation,$photos);
+
+echo "-------<br>\n";
+echo "Starting days insert <br>\n";
+
+foreach ($decoded_data as $iter) {
+  $tdate = $iter["date"];
+  $startLocation = $iter["startLocation"];
+  $finishLocation = $iter["finishLocation"];
+  $photos = json_encode($iter["photos"]);
+  $stmt->execute();
+  echo "-date: " . $tdate . "<br>\n";
+  echo "photos list: " . $photos . "<br>\n";
+  echo "start location: " . $startLocation . "<br>\n";
+  echo "finish location: " . $finishLocation . "<br>\n";
+}
+
+echo "-------<br>\n";
+$stmt->close();
+
+
+//checking Caption results
 $sql = "SELECT * FROM Captions ORDER BY create_date";
 $result = $conn->query($sql);
 
@@ -107,22 +171,39 @@ if ($result->num_rows > 0) {
     echo "id: ". $row["id"] . " - create_date: " . $row["create_date"]. " - photoFile: " . $row["photoFile"]. " - Caption: " . $row["caption"]. "<br>";
   }
 } else {
-  echo "0 results";
+  echo "0 results<br>";
 }
 
+//checking Trip results
 $sql = "SELECT * FROM Trips ORDER BY create_date";
 $result = $conn->query($sql);
 
 //print results
-echo "printing trip results<br>";
+echo "Printing trip results<br>\n";
 if ($result->num_rows > 0) {
   // output data of each row
   while($row = $result->fetch_assoc()) {
     echo "id: ". $row["id"] . " - create_date: " . $row["create_date"]. " - location: " . $row["location"]. " - date code: " . $row["datecode"]. "<br>";
   }
 } else {
-  echo "0 results";
+  echo "0 results<br>";
 }
+
+//checking Day results
+$sql = "SELECT * FROM Days ORDER BY create_date";
+$result = $conn->query($sql);
+
+//print results
+echo "Printing Day results<br>\n";
+if ($result->num_rows > 0) {
+  // output data of each row
+  while($row = $result->fetch_assoc()) {
+    echo "id: ". $row["id"] . " - create_date: " . $row["create_date"]. " - Start Location: " . $row["startLocation"]. " - Finish Location: " . $row["finishLocation"]." - trip date: " . $row["tdate"]. " - photos: " . $row["photos"]. "<br>";
+  }
+} else {
+  echo "0 results<br>";
+}
+
 
 $conn->close();
 
