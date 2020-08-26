@@ -10,10 +10,6 @@ function genDBs(result_tag) {
   xhttp.send();
 }
 
-// function captionText(id){
-// 	var
-// }
-
 function getCaption(result_tag,id) {
   var xhttp = new XMLHttpRequest();
   document.getElementById(result_tag).innerHTML = "Trying to update...";
@@ -25,22 +21,13 @@ function getCaption(result_tag,id) {
     var cropString = "";
     crop_vals = JSON.parse(caption.crop_vals)
 
-    console.log("----")
-    console.log("beginning crop test")
-    console.log("Is crop_vals equal to 'none'? "+ (crop_vals == "none"))
-
+   //generating html string, in case cropping happens.
    if(crop_vals != "none"){
-      console.log("Cropping right here");
-      console.log("Crop vals: " + crop_vals);
-      console.log("type of crop_vals: " + typeof crop_vals);
-      console.log("length of crop_vals: " + crop_vals.length)
       cropString += "style = \"margin:";
       for (i=0;i<crop_vals.length;i++){
         cropString += " " + crop_vals[i] + "px";
       }
       cropString += ";\"";
-      console.log("cropstring is: ")
-      console.log(cropString)
     }
 
     jsString += "<div class = 'captionImage'>\n";
@@ -130,7 +117,7 @@ function getImages(result_tag,id) {
   xhttp.send();
 }
 
-function updateImagesList(sourceListID,destListID,ts_tag) {
+function updateImagesList(sourceListID,destListID) {
   var newElements = "";
   var parentElement = document.getElementById(destListID);
   var imagesList=[1,2,3];
@@ -144,29 +131,24 @@ function updateImagesList(sourceListID,destListID,ts_tag) {
       var jsonResponse = JSON.parse(this.responseText);
       var imagesList = JSON.parse(jsonResponse.photos);
 
-
       //clear the existing elements
       parentElement.innerHTML = "";
-
       for (i = 0; i < imagesList.length; i++) {
         newElements+="<option value=\"" + imagesList[i] + "\">" + "Image "+ (i+1) + "</option>" ;
       }
-
       document.getElementById(destListID).innerHTML = newElements //add options to target dropdown
       imageVal = updateListVal(destListID)//update selection in target dropdown
     }
   }   
   xhttp.open("GET", "imagesDays.php?id="+day_id, true);
   xhttp.send();
-
 }
 
-function updateDaysList(sourceListID,destListID,ts_tag) {
+function updateDaysList(sourceListID,destListID) {
   var newElements = "";
   var parentElement = document.getElementById(destListID);
   var daysList=[1,2,3];
   var trip_id;
-
   trip_id = updateListVal(sourceListID);
 
   var xhttp = new XMLHttpRequest();
@@ -175,19 +157,39 @@ function updateDaysList(sourceListID,destListID,ts_tag) {
       var jsonResponse = JSON.parse(this.responseText);
       var daysList = JSON.parse(jsonResponse.days);
 
-
       //clear the existing elements
       parentElement.innerHTML = "";
-
       for (i = 0; i < daysList.length; i++) {
         newElements+="<option value=\"" + daysList[i] + "\">" + "Day "+ (i+1) + "</option>" ;
       }
-
       document.getElementById(destListID).innerHTML = newElements //add options to target dropdown
       daysVal = updateListVal(destListID)//update selection in target dropdown
     }
   }   
   xhttp.open("GET", "daysTrips.php?id="+trip_id, true);
   xhttp.send();
-
 }
+
+function getTrips(destListID) {
+  var newElements = "";
+  var parentElement = document.getElementById(destListID);
+  var tripsList=[1,2,3];
+
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      var tripsList = JSON.parse(this.responseText);
+      //clear the existing elements
+      parentElement.innerHTML = "";
+      for (i = 0; i < tripsList.length; i++) {
+        newElements+="<option value=\"" + tripsList[i]["id"] + "\">" + tripsList[i]["name"] + "</option>" ;
+      }
+      document.getElementById(destListID).innerHTML = newElements //add options to target dropdown
+      tripsVal = updateListVal(destListID)//update selection in target dropdown
+    }
+  }   
+  xhttp.open("GET", "getTrips.php", true);
+  xhttp.send();
+}
+
+

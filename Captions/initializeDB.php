@@ -61,6 +61,7 @@ if ($conn->query($sql) === TRUE) {
 $sql = "CREATE TABLE Trips (
 id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 location VARCHAR(50) NOT NULL,
+name VARCHAR(100) NOT NULL,
 datecode VARCHAR(240) NOT NULL,
 days VARCHAR(100) NOT NULL,
 create_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
@@ -120,10 +121,11 @@ $decoded_json = json_decode($json_string, true);
 $decoded_data = $decoded_json["trips"];
 
 // var_dump($decoded_data);
-$stmt = $conn->prepare("INSERT INTO Trips (location, datecode, days) VALUES (?, ?, ?)");
-$stmt->bind_param("sss", $location, $datecode, $days);
+$stmt = $conn->prepare("INSERT INTO Trips (name,location, datecode, days) VALUES (?, ?, ?, ?)");
+$stmt->bind_param("ssss", $trip_name,$location, $datecode, $days);
 
 foreach ($decoded_data as $iter) {
+  $trip_name = $iter["name"];
   $location = $iter["location"];
   $datecode = $iter["dateCode"];
   $days = json_encode($iter["days"]);

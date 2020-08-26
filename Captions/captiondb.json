@@ -197,18 +197,21 @@
 	"trips":[
 		{
 			"id":1,
+			"name":"Main 2020",
 			"location":"Main River",
 			"dateCode":"2020-06",
 			"days":[1,2,3]
 		},
 		{
 			"id":2,
+			"name":"Mosel 2020",
 			"location":"Mosel River",
 			"dateCode":"2020-07",
 			"days":[4,5,6]
 		},
 		{
 			"id":3,
+			"name":"Rhine 2020",
 			"location":"Rhine River",
 			"dateCode":"2020-07",
 			"days":[7,8]
