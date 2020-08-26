@@ -30,6 +30,8 @@
 
 .captionImage img {
     width: 300px;
+    padding:4px;
+    border-radius:10px;
 }
 
 
@@ -54,11 +56,15 @@ body{
 }
 
 .crop {
+    margin:4px;
     width: 300px;
     height: 225px;
     overflow: hidden;
+    border-radius:10px;
 }
 
 .crop img {
+    padding:0px;
     width: 300px;
+    border-radius:10px;
 }
