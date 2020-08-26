@@ -33,12 +33,14 @@
 	var daysVal = 1; 
 	var imageVal=1;
 	var tripsVal = 1;
-
+	var db_resultName = "db_result"
 </script>
 
 <div>
 	<button type="button" id = "button_1" onclick=getCaption(tag1,caption_id)> One Caption </button> <br>
 	<button type="button" id = "button_2" onclick=getCaptions(tag2,caption_ids)> Multiple Captions </button><br>
+
+	<button type="button" id = "button_6" onclick=genDBs(db_resultName)> Re-Initilize the Database </button><span id = db_result></span><br>
 	<button type="button" id = "button_3" onclick=getTrips(idTag4)> Get Trips</button><br>
 
 	<form>

@@ -12,7 +12,6 @@
   border-radius: 4px;
 }
 
-
 .menubar a:hover{
   background-color:#7DA8C6;
 }
@@ -33,7 +32,6 @@
     padding:4px;
     border-radius:10px;
 }
-
 
 .captionImage:hover{
   background-color:lightgrey;
