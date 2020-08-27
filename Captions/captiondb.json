@@ -3,6 +3,7 @@
 	"captions":[
 		{
 			"id":1,
+			"dayID":1,
 			"photoFile":"Main-Day-1-Bayern.JPEG",
 			"caption":"I reached the border of Bavaria",
 			"title":"Stone marks the border",
@@ -11,6 +12,7 @@
 		},
 		{
 			"id":2,
+			"dayID":1,
 			"photoFile":"Main-Day-1-Fields.JPEG",
 			"caption":"Barley grows under the cloudy sky",
 			"title":"Barey fields in the river valley",
@@ -19,6 +21,7 @@
 		},
 		{
 			"id":3,
+			"dayID":1,
 			"photoFile":"Main-Day-1-River.JPEG",
 			"caption":"The valey is beautiful here",
 			"title":"Bike trail along the river",
@@ -27,6 +30,7 @@
 		},
 		{
 			"id":4,
+			"dayID":2,
 			"photoFile":"Main-Day-2-Ships.JPEG",
 			"caption":"We saw a small shipyard along the river",
 			"title":"Shipyard along the river Main",
@@ -35,6 +39,7 @@
 		},
 		{
 			"id":5,
+			"dayID":2,
 			"photoFile":"Main-Day-2-Clouds.JPEG",
 			"caption":"The sky was beautiful the whole trip",
 			"title":"Clouds over wheat fields",
@@ -43,6 +48,7 @@
 		},
 		{
 			"id":6,
+			"dayID":2,
 			"photoFile":"Main-Day-2-Shade.JPEG",
 			"caption":"The shade trees along this path were very welcome",
 			"title":"Bike path shaded by trees",
@@ -51,6 +57,7 @@
 		},
 		{
 			"id":7,
+			"dayID":3,
 			"photoFile":"Main-Day-3-Clouds.JPEG",
 			"caption":"The Rhine river valley is much wider than the Main",
 			"title":"A bike path next to fields",
@@ -59,6 +66,7 @@
 		},
 		{
 			"id":8,
+			"dayID":3,
 			"photoFile":"Main-Day-3-View.JPEG",
 			"caption":"The landscape views were amazing",
 			"title":"Wheat fields on a sunny day",
@@ -67,6 +75,7 @@
 		},
 		{
 			"id":9,
+			"dayID":3,
 			"photoFile":"Main-Day-3-Scrap.JPEG",
 			"caption":"Mannheim was not very beautiful",
 			"title":"Scrap yard, viewd from amove",
@@ -75,6 +84,7 @@
 		},
 		{
 			"id":10,
+			"dayID":4,
 			"photoFile":"Mosel-Day-1-Happy.JPEG",
 			"caption":"We started out in good spirits.",
 			"title":"Bike Selfie",
@@ -83,6 +93,7 @@
 		},
 		{
 			"id":11,
+			"dayID":4,
 			"photoFile":"Mosel-Day-1-Kneipp.JPG",
 			"caption":"Exploring the the first <a href = 'https://de.wikipedia.org/wiki/Kneipp-Anlage'>kneippanlage</a>",
 			"title":"Enjoing the the Kneippanlage",
@@ -91,6 +102,7 @@
 		},
 		{
 			"id":12,
+			"dayID":4,
 			"photoFile":"Mosel-Day-1-View.JPG",
 			"caption":"The outlook from the top of Burgruine Landshut",
 			"title":"View of the Mosel, from Burgruine Landshut",
@@ -99,6 +111,7 @@
 		},
 		{
 			"id":13,
+			"dayID":5,
 			"photoFile":"Mosel-Day-2-Happy.JPG",
 			"caption":"Starting the day with good spirits",
 			"title":"Bike Selfie",
@@ -107,6 +120,7 @@
 		},
 		{
 			"id":14,
+			"dayID":5,
 			"photoFile":"Mosel-Day-2-Wheat.JPEG",
 			"caption":"Making friends with a wheat field",
 			"title":"Deva in a wheat field",
@@ -115,6 +129,7 @@
 		},
 		{
 			"id":15,
+			"dayID":5,
 			"photoFile":"Mosel-Day-2-Eltz.JPEG",
 			"caption":"We made it to Burg Eltz",
 			"title":"Burg Eltz, seen around sunset",
@@ -123,6 +138,7 @@
 		},
 		{
 			"id":16,
+			"dayID":6,
 			"photoFile":"Mosel-Day-3-Bridge.JPEG",
 			"caption":"A gorgeous bridge high above the river",
 			"title":"Bridge above the Mosel",
@@ -131,6 +147,7 @@
 		},
 		{
 			"id":17,
+			"dayID":6,
 			"photoFile":"Mosel-Day-3-Fountain.JPG",
 			"caption":"A fountain in the Koblenz Altstadt",
 			"title":"A fountain in Koblenz",
@@ -139,6 +156,7 @@
 		},
 		{
 			"id":18,
+			"dayID":6,
 			"photoFile":"Mosel-Day-3-Train.JPEG",
 			"caption":"Bike on the train, headed home",
 			"title":"Bicycle stored in the train",
@@ -147,6 +165,7 @@
 		},
 		{
 			"id":19,
+			"dayID":7,
 			"photoFile":"Rhine-Day-1-Train.JPG",
 			"caption":"There was a lot of confusion loading up the train",
 			"title":"Boarding the train",
@@ -155,6 +174,7 @@
 		},
 		{
 			"id":20,
+			"dayID":7,
 			"photoFile":"Rhine-Day-1-Bridge.JPG",
 			"caption":"I found a charming old wooden bridge",
 			"title":"Covered Wooden Bridge",
@@ -163,6 +183,7 @@
 		},
 		{
 			"id":21,
+			"dayID":7,
 			"photoFile":"Rhine-Day-1-Trees.JPG",
 			"caption":"The path amongst the trees",
 			"title":"A bike path in the forest",
@@ -171,6 +192,7 @@
 		},
 		{
 			"id":22,
+			"dayID":8,
 			"photoFile":"Rhine-Day-2-Riverbend.JPG",
 			"caption":"The view from the top of a Klettersteig near Boppard",
 			"title":"A bend in the Rhine, viewed from the bluffs",
@@ -179,6 +201,7 @@
 		},
 		{
 			"id":23,
+			"dayID":8,
 			"photoFile":"Rhine-Day-2-Castle.JPG",
 			"caption":"The ruins of Castle Rheinfels",
 			"title":"View between the walls of castle ruins",
@@ -187,6 +210,7 @@
 		},
 		{
 			"id":24,
+			"dayID":8,
 			"photoFile":"Rhine-Day-2-Valley.JPG",
 			"caption":"A small, steep valley, viewed from Castle Rheinfels",
 			"title":"View of a wooded valley",
@@ -195,6 +219,7 @@
 		},
 		{
 			"id":25,
+			"dayID":8,
 			"photoFile":"Rhine-Day-2-Selfie.JPG",
 			"caption":"View of the rhine, from Burg Rhinefels",
 			"title":"View of the Rhine valley from above",
@@ -203,6 +228,7 @@
 		},
 		{
 			"id":26,
+			"dayID":5,
 			"photoFile":"Mosel-Day-2-Beautiful.JPEG",
 			"caption":"Vineyards along the banks of the Mosel",
 			"title":"View of the banks of the Mosel",
@@ -211,6 +237,7 @@
 		},
 		{
 			"id":27,
+			"dayID":2,
 			"photoFile":"Main-Day-2-Frankfurt.JPEG",
 			"caption":"The Frankfurt skyline, from the banks of the Main",
 			"title":"The Frankfurt Skyline",
@@ -250,6 +277,7 @@
 	"days":[
 		{
 			"id":1,
+			"tripID":1,
 			"date":"2020-06-15",
 			"startLocation":"Würzburg",
 			"finishLocation":"Wertheim",
@@ -258,6 +286,7 @@
 		},
 		{
 			"id":2,
+			"tripID":1,
 			"date":"2020-06-16",
 			"startLocation":"Wertheim",
 			"finishLocation":"Frankfurt",
@@ -266,6 +295,7 @@
 		},
 		{
 			"id":3,
+			"tripID":1,
 			"date":"2020-06-17",
 			"startLocation":"Frankfurt",
 			"finishLocation":"Heidelberg",
@@ -274,6 +304,7 @@
 		},		
 		{
 			"id":4,
+			"tripID":2,
 			"date":"2020-07-15",
 			"startLocation":"Trier",
 			"finishLocation":"Wolf",
@@ -282,6 +313,7 @@
 		},
 		{
 			"id":5,
+			"tripID":2,
 			"date":"2020-07-16",
 			"startLocation":"Wolf",
 			"finishLocation":"Löf",
@@ -290,6 +322,7 @@
 		},
 		{
 			"id":6,
+			"tripID":2,
 			"date":"2020-07-17",
 			"startLocation":"Löf",
 			"finishLocation":"Koblenz",
@@ -298,6 +331,7 @@
 		},
 		{
 			"id":7,
+			"tripID":3,
 			"date":"2020-07-12",
 			"startLocation":"Bonn",
 			"finishLocation":"Koblenz",
@@ -306,6 +340,7 @@
 		},
 		{
 			"id":8,
+			"tripID":3,
 			"date":"2020-07-13",
 			"startLocation":"Koblenz",
 			"finishLocation":"Mainz",

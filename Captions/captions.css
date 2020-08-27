@@ -25,6 +25,19 @@
   display:inline-block;
   font-family: arial, sans-serif;
   font-size: 14px;
+  background-color: #BBBBEE;
+}
+
+.day{
+  border-radius:10px;
+  border:1px solid grey;
+  padding:4px;
+  color:black;
+  text-align:left;
+  display:inline-block;
+  font-family: arial, sans-serif;
+  font-size: 16px;
+  background-color: #AAAADD;
 }
 
 .captionImage img {

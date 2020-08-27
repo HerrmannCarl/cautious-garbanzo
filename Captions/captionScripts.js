@@ -62,7 +62,6 @@ function getCaptions(result_tag,ids) {
   new_str += "</div>";
   document.getElementById(result_tag).innerHTML=new_str;
   
-  console.log("new_strings is: "+ new_strs)
   for (i=0;i<new_strs.length;i++){
   	tag = new_strs[i];
   	var tag_id = ids[i];
@@ -92,37 +91,37 @@ function getImagesList(day_id){
   xhttp.send();
 }
 
-function getImages(result_tag,id) {
-  var xhttp = new XMLHttpRequest();
-  document.getElementById(result_tag).innerHTML = "Trying to update...<br>\n";
-  xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-    var jsonResponse = JSON.parse(this.responseText);
-    var responseString = "";
-    var jsString = "";
-    jsString += "Trying Update. Really.  I'm trying<br>\n";
-    jsString += "id: " + jsonResponse.id + "<br>\n";
-    jsString += "date: " + jsonResponse.tdate + "<br>\n";
-    jsString += "startLocation: " + jsonResponse.startLocation + "<br>\n";
-    jsString += "finishLocation: " + jsonResponse.finishLocation + "<br>\n";
-    jsString += "photos: " + JSON.parse(jsonResponse.photos) + "<br>\n";
+// function getImages(result_tag,id) {
+//   var xhttp = new XMLHttpRequest();
+//   document.getElementById(result_tag).innerHTML = "Trying to update...<br>\n";
+//   xhttp.onreadystatechange = function() {
+//     if (this.readyState == 4 && this.status == 200) {
+//     var jsonResponse = JSON.parse(this.responseText);
+//     var responseString = "";
+//     var jsString = "";
+//     jsString += "Trying Update. Really.  I'm trying<br>\n";
+//     jsString += "id: " + jsonResponse.id + "<br>\n";
+//     jsString += "date: " + jsonResponse.tdate + "<br>\n";
+//     jsString += "startLocation: " + jsonResponse.startLocation + "<br>\n";
+//     jsString += "finishLocation: " + jsonResponse.finishLocation + "<br>\n";
+//     jsString += "photos: " + JSON.parse(jsonResponse.photos) + "<br>\n";
 
-      // document.getElementById(result_tag).innerHTML = "Sucess Updating!\n"+responseString + "<br>" + jsString;
-    document.getElementById(result_tag).innerHTML = jsString;
-    return false;
-    }
-  };
-  // document.getElementById(result_tag).innerHTML = "imageCaptions.php?id="+id;
-  xhttp.open("GET", "imagesDays.php?id="+id, true);
-  xhttp.send();
-}
+//       // document.getElementById(result_tag).innerHTML = "Sucess Updating!\n"+responseString + "<br>" + jsString;
+//     document.getElementById(result_tag).innerHTML = jsString;
+//     return false;
+//     }
+//   };
+//   // document.getElementById(result_tag).innerHTML = "imageCaptions.php?id="+id;
+//   xhttp.open("GET", "imagesDays.php?id="+id, true);
+//   xhttp.send();
+// }
 
 function updateImagesList(sourceListID,destListID) {
   var newElements = "";
   var parentElement = document.getElementById(destListID);
   var imagesList=[1,2,3];
   var day_id;
-
+  var tmp_list = [];
   day_id = updateListVal(sourceListID);
 
   var xhttp = new XMLHttpRequest();
@@ -135,9 +134,11 @@ function updateImagesList(sourceListID,destListID) {
       parentElement.innerHTML = "";
       for (i = 0; i < imagesList.length; i++) {
         newElements+="<option value=\"" + imagesList[i] + "\">" + "Image "+ (i+1) + "</option>" ;
+        tmp_list.push(imagesList[i]);
       }
       document.getElementById(destListID).innerHTML = newElements //add options to target dropdown
       imageVal = updateListVal(destListID)//update selection in target dropdown
+      imageVals = tmp_list;
     }
   }   
   xhttp.open("GET", "imagesDays.php?id="+day_id, true);
@@ -149,6 +150,7 @@ function updateDaysList(sourceListID,destListID) {
   var parentElement = document.getElementById(destListID);
   var daysList=[1,2,3];
   var trip_id;
+  var tmp_list = [];
   trip_id = updateListVal(sourceListID);
 
   var xhttp = new XMLHttpRequest();
@@ -161,9 +163,11 @@ function updateDaysList(sourceListID,destListID) {
       parentElement.innerHTML = "";
       for (i = 0; i < daysList.length; i++) {
         newElements+="<option value=\"" + daysList[i] + "\">" + "Day "+ (i+1) + "</option>" ;
+        tmp_list.push(daysList[i])
       }
       document.getElementById(destListID).innerHTML = newElements //add options to target dropdown
-      daysVal = updateListVal(destListID)//update selection in target dropdown
+      dayVal = updateListVal(destListID)//update selection in target dropdown
+      dayVals = tmp_list;
     }
   }   
   xhttp.open("GET", "daysTrips.php?id="+trip_id, true);
@@ -174,6 +178,7 @@ function getTrips(destListID) {
   var newElements = "";
   var parentElement = document.getElementById(destListID);
   var tripsList=[1,2,3];
+  var tmp_list = [];
 
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
@@ -183,9 +188,11 @@ function getTrips(destListID) {
       parentElement.innerHTML = "";
       for (i = 0; i < tripsList.length; i++) {
         newElements+="<option value=\"" + tripsList[i]["id"] + "\">" + tripsList[i]["name"] + "</option>" ;
+        tmp_list.push(tripsList[i]["id"]);
       }
-      document.getElementById(destListID).innerHTML = newElements //add options to target dropdown
-      tripsVal = updateListVal(destListID)//update selection in target dropdown
+      document.getElementById(destListID).innerHTML = newElements ;//add options to target dropdown
+      tripVal = updateListVal(destListID);//update selection in target dropdown
+      tripVals = tmp_list;
     }
   }   
   xhttp.open("GET", "getTrips.php", true);
@@ -193,12 +200,31 @@ function getTrips(destListID) {
 }
 
 
-function genTrip(result_tag,tripsVal){
+function genTrip(result_tag,tripVal){
   var update_string = "Updating the trip, I promise...";
   document.getElementById(result_tag).innerHTML = update_string;
 }
 
-function genDay(result_tag,daysVal){
+function genDay(result_tag,dayVal,imageIDs){
   var update_string = "Updating the day, I promise...";
-  document.getElementById(result_tag).innerHTML = update_string;
+  document.getElementById(result_tag).innerHTML=update_string
+
+  var new_str = "";
+  var new_tags = [];
+  var description = "Description Pending"
+  new_str += "<div class = day>";
+  new_str += "<p>"+description+"</p>";
+  for (i=0;i<imageIDs.length;i++){
+    var current_tag = "image_"+imageIDs[i];
+    new_str +="<div id="+current_tag+' class = "imageContainer"> Temp text here </div>';//add div to string.
+    new_tags.push(current_tag);//add div tag to list, for later use. 
+  }
+  new_str += "</div>"
+  document.getElementById(result_tag).innerHTML=new_str;//Add divs to existing HTML page. 
+
+  for (i=0;i<new_tags.length;i++){
+    var tag = new_tags[i];
+    var tag_id = imageIDs[i]
+    getCaption(tag,tag_id)
+  }
 }
