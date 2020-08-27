@@ -48,6 +48,7 @@ photoFile VARCHAR(50) NOT NULL,
 caption VARCHAR(240) NOT NULL,
 title VARCHAR(240) NOT NULL,
 description VARCHAR(240) NOT NULL,
+day_id int(6) DEFAULT NULL,
 crop_vals VARCHAR(240) NOT NULL,
 create_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 )";
@@ -81,6 +82,7 @@ tdate VARCHAR(50) NOT NULL,
 startLocation VARCHAR(100) NOT NULL,
 finishLocation VARCHAR(100) NOT NULL,
 description VARCHAR(240) NOT NULL,
+trip_id INT(6) DEFAULT NULL,
 photos VARCHAR(100) NOT NULL,
 create_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 )";
@@ -103,14 +105,15 @@ echo "<br>\n";
 
 // var_dump($decoded_data);
 
-$stmt = $conn->prepare("INSERT INTO Captions (photoFile, caption, title, description, crop_vals) VALUES (?, ?, ?, ?,?)");
-$stmt->bind_param("sssss", $photoFile, $caption, $title, $description, $crop_vals);
+$stmt = $conn->prepare("INSERT INTO Captions (photoFile, caption, title, description, day_id, crop_vals) VALUES (?, ?, ?, ?, ?, ?)");
+$stmt->bind_param("ssssis", $photoFile, $caption, $title, $description, $day_id, $crop_vals);
 
 foreach ($decoded_json["captions"] as $iter) {
   $photoFile = $iter["photoFile"];
   $caption = $iter["caption"];
   $title = $iter["title"];
   $description = $iter["description"];
+  $day_id = $iter["dayID"];
   $crop_vals = json_encode($iter["crop"]);
   $stmt->execute();
 }
@@ -156,8 +159,8 @@ $decoded_json = json_decode($json_string, true);
 $decoded_data = $decoded_json["days"];
 
 // var_dump($decoded_data);
-$stmt = $conn->prepare("INSERT INTO Days (tdate, startLocation, finishLocation, description, photos) VALUES (?, ?, ?, ?, ?)");
-$stmt->bind_param("sssss", $tdate, $startLocation, $finishLocation, $description, $photos);
+$stmt = $conn->prepare("INSERT INTO Days (tdate, startLocation, finishLocation, description, trip_id, photos) VALUES (?, ?, ?, ?, ?, ?)");
+$stmt->bind_param("ssssis", $tdate, $startLocation, $finishLocation, $description, $trip_id, $photos);
 
 // echo "-------<br>\n";
 // echo "Starting days insert <br>\n";
@@ -167,6 +170,7 @@ foreach ($decoded_data as $iter) {
   $startLocation = $iter["startLocation"];
   $finishLocation = $iter["finishLocation"];
   $description = $iter["description"];
+  $trip_id = $iter["tripID"];
   $photos = json_encode($iter["photos"]);
   $stmt->execute();
 /*  echo "-date: " . $tdate . "<br>\n";
