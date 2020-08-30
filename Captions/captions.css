@@ -7,6 +7,20 @@
   text-align:left;
 }
 
+.bFixed{
+  width:130px;
+}
+
+span{
+  width:60px;
+  float:left;
+  padding-left:0px;
+}
+
+.fSpan{
+  display:inline-block;
+}
+
 .menubar a{
   padding:4px;
   border-radius: 4px;

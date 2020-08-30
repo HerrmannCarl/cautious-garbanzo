@@ -70,6 +70,8 @@ function getCaptions(result_tag,ids) {
 }
 
 function updateListVal(target_id){
+  console.log("-From within updateListVal")
+  console.log("--val of target ID: " + target_id)
   var updateObj = document.getElementById(target_id);
   var target = updateObj.options[updateObj.selectedIndex].value;
   return target;
@@ -145,6 +147,43 @@ function updateImagesList(sourceListID,destListID) {
   xhttp.send();
 }
 
+function updateImagesList2(sourceListID,destListID) {
+  var newElements = "";
+  var parentElement = document.getElementById(destListID);
+  var imagesList=[1,2,3];
+  var day_id;
+  var tmp_list = [];
+  day_id = updateListVal(sourceListID);
+
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      var jsonResponse = JSON.parse(this.responseText);
+      var imagesList = [];
+
+      console.log("Here's the destination ID: " + destListID)
+      console.log("Here's the length of the JSON response: " + jsonResponse.length)
+      for(i=0;i<jsonResponse.length;i++){
+        imagesList.push(jsonResponse[i]);
+        console.log("Here's the new element: "+jsonResponse[i]);
+      }
+
+
+      parentElement.innerHTML = "";      //clear the existing elements
+      for (i = 0; i < imagesList.length; i++) {
+        newElements+="<option value=\"" + imagesList[i]["id"] + "\">" + "Image "+ (i+1) + "</option>" ;
+        tmp_list.push(imagesList[i]);
+      }
+      document.getElementById(destListID).innerHTML = newElements; //add options to target dropdown
+      console.log("from low inside the new thing, destListID: " + destListID)
+      imageVal = updateListVal(destListID);//update selection in target dropdown
+      imageVals = tmp_list;
+    }
+  }   
+  xhttp.open("GET", "getImagesList.php?id="+day_id, true);
+  xhttp.send();
+}
+
 function updateDaysList(sourceListID,destListID) {
   var newElements = "";
   var parentElement = document.getElementById(destListID);
@@ -171,6 +210,35 @@ function updateDaysList(sourceListID,destListID) {
     }
   }   
   xhttp.open("GET", "daysTrips.php?id="+trip_id, true);
+  xhttp.send();
+}
+
+function updateDaysList2(sourceListID,destListID) {
+  var newElements = "";
+  var parentElement = document.getElementById(destListID);
+  var daysList=[1,2,3];
+  var trip_id;
+  var tmp_list = [];
+  trip_id = updateListVal(sourceListID);
+
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      var jsonResponse = JSON.parse(this.responseText);
+      var daysList = JSON.parse(jsonResponse.days);
+
+      //clear the existing elements
+      parentElement.innerHTML = "";
+      for (i = 0; i < daysList.length; i++) {
+        newElements+="<option value=\"" + daysList[i] + "\">" + "Day "+ (i+1) + "</option>" ;
+        tmp_list.push(daysList[i])
+      }
+      document.getElementById(destListID).innerHTML = newElements //add options to target dropdown
+      dayVal = updateListVal(destListID)//update selection in target dropdown
+      dayVals = tmp_list;
+    }
+  }   
+  xhttp.open("GET", "getDaysList.php?id="+trip_id, true);
   xhttp.send();
 }
 
