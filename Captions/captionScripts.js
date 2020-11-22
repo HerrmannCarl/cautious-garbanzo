@@ -33,9 +33,9 @@ function getCaption(result_tag,id) {
     jsString += "<div class = 'captionImage'>\n";
 		jsString += caption.caption + "<br>\n";
     
-		jsString += '<a href=' + caption.photoFile + ' target="_blank">';
+		jsString += '<a href=UserData/' + caption.photoFile + ' target="_blank">';
     if(crop_vals != "none"){jsString += '<div class = "crop">';}
-		jsString +=	'<img src = ' + caption.photoFile + ' title = \"' + caption.title + '\" alt = \"' + caption.description + '\" ';
+		jsString +=	'<img src = UserData/' + caption.photoFile + ' title = \"' + caption.title + '\" alt = \"' + caption.description + '\" ';
     jsString += cropString;
     jsString += '>\n';
     if(crop_vals != "none"){jsString += '</div>';}
@@ -70,8 +70,8 @@ function getCaptions(result_tag,ids) {
 }
 
 function updateListVal(target_id){
-  console.log("-From within updateListVal")
-  console.log("--val of target ID: " + target_id)
+  // console.log("-From within updateListVal")
+  // console.log("--val of target ID: " + target_id)
   var updateObj = document.getElementById(target_id);
   var target = updateObj.options[updateObj.selectedIndex].value;
   return target;
@@ -120,11 +120,16 @@ function getImagesList(day_id){
 
 function updateImagesList(sourceListID,destListID) {
   var newElements = "";
-  var parentElement = document.getElementById(destListID);
+  var parentElement = destListID;// document.getElementById(destListID);
   var imagesList=[1,2,3];
   var day_id;
   var tmp_list = [];
   day_id = updateListVal(sourceListID);
+
+  // console.log("inside updateImatesList")
+  // console.log("sourceListID = "+sourceListID)
+  // console.log("destListID = " + destListID)  
+  parentElement = destListID
 
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
@@ -161,11 +166,11 @@ function updateImagesList2(sourceListID,destListID) {
       var jsonResponse = JSON.parse(this.responseText);
       var imagesList = [];
 
-      console.log("Here's the destination ID: " + destListID)
-      console.log("Here's the length of the JSON response: " + jsonResponse.length)
+      // console.log("Here's the destination ID: " + destListID)
+      // console.log("Here's the length of the JSON response: " + jsonResponse.length)
       for(i=0;i<jsonResponse.length;i++){
         imagesList.push(jsonResponse[i]);
-        console.log("Here's the new element: "+jsonResponse[i]);
+        // console.log("Here's the new element: "+jsonResponse[i]);
       }
 
 
@@ -184,6 +189,11 @@ function updateImagesList2(sourceListID,destListID) {
   xhttp.send();
 }
 
+function updateImagesList3(daysListID,imagesListID){
+  console.log("--running updateImageList3")
+  updateImagesList(daysListID,imagesListID);  
+}
+
 function updateDaysList(sourceListID,destListID) {
   var newElements = "";
   var parentElement = document.getElementById(destListID);
@@ -191,6 +201,9 @@ function updateDaysList(sourceListID,destListID) {
   var trip_id;
   var tmp_list = [];
   trip_id = updateListVal(sourceListID);
+
+  // console.log("destListID is: " + destListID)
+  // console.log("parentElement is: " + parentElement)
 
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
@@ -242,11 +255,21 @@ function updateDaysList2(sourceListID,destListID) {
   xhttp.send();
 }
 
+function updateDaysList3(tripsListID,daysListID,imagesListID){
+  console.log("--running updateDaysList3")
+  updateDaysList(tripsListID,daysListID);
+  updateImagesList3(daysListID,imagesListID);
+}
+
 function getTrips(destListID) {
   var newElements = "";
   var parentElement = document.getElementById(destListID);
   var tripsList=[1,2,3];
   var tmp_list = [];
+  // console.log("Here's the destListID: "+ destListID)
+  // console.log("Here's the parent of destListID: "+ parentElement)
+  parentElement = destListID
+  // console.log("After Replacement, Here's the parent of destListID: "+ parentElement)
 
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
@@ -265,6 +288,11 @@ function getTrips(destListID) {
   }   
   xhttp.open("GET", "getTrips.php", true);
   xhttp.send();
+}
+
+function getTrips3(tripsListID,daysListID,imagesListID){
+  getTrips(tripsListID);
+  updateDaysList3(tripsListID,daysListID,imagesListID);
 }
 
 
