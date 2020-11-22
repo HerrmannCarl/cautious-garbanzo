@@ -48,38 +48,42 @@
 	<button type="button" id = "button_2" onclick=getCaptions(tag2,caption_ids)> Multiple Captions </button><br>
 
 	<button type="button" id = "button_6" onclick=genDBs(db_resultName)> Re-Initilize the Database </button><span id = db_result></span><br>
-	<button type="button" class = "bFixed" id = "button_3" onclick=getTrips(idTag4)> Get Trips List</button><br>
+	<button type="button" class = "bFixed" id = "button_3" onclick=getTrips(idTag4)> Get Trips List</button>
+	<button type="button" class = "bFixed" id = "button_11" onclick=getTrips3(idTag4,idTag3,idTag2)> Get Trips List 3</button>
+	<br>
 
 	<form>
 	 	<label for="trips"><span class = "fSpan">Trips:</span></label>
 	  		<select name="id" class = "bFixed" id="caption_id4" onchange="tripVal = updateListVal('caption_id4')">
-	  			<option value="1">Main Trip</option>
-	  			<option value="2">Mosel Trip</option>
-	  			<option value="3">Rhine Trip</option>
+	  			<option value="1">Default 1</option>
+	  			<option value="2">Default 2</option>
+	  			<option value="3">Default 3</option>
 	 		</select>
 		<button type="button" class = "bFixed" id = "button_4" onclick=updateDaysList(idTag4,idTag3)> Get Days List</button>
 		<button type="button" class = "bFixed" id = "button_9" onclick=updateDaysList2(idTag4,idTag3)> Get Days List 2</button>
+		<button type="button" class = "bFixed" id = "button_12" onclick=updateDaysList3(idTag4,idTag3,idTag2)> Get Days List 3</button>
 	 	<button type="button" class = "bFixed" id = "button_8" onclick=genTrip(tag5,tripVal)>Show Trips</button><br>
 	</form>
 
 	<form>
 	 	<label for="days"><span class = "fSpan">Days:</span></label>
 	  		<select name="id" class = "bFixed" id="caption_id3" onchange="dayVal = updateListVal('caption_id3')">
-	  			<option value="1">Main Day 1</option>
-	  			<option value="2">Main Day 2</option>
-	  			<option value="3">Main Day 3</option>
+	  			<option value="1">Default Day 1</option>
+	  			<option value="2">Default Day 2</option>
+	  			<option value="3">Default Day 3</option>
 	 		</select>
-		<button type="button" class = "bFixed" id = "button_5" onclick=updateImagesList(idTag3,idTag2)> Get Images List</button>
+		<button type="button" class = "bFixed" id = "button_5"   onclick=updateImagesList(idTag3,idTag2)> Get Images List</button>
 		<button type="button" class = "bFixed" id = "button_10" onclick=updateImagesList2(idTag3,idTag2)> Get Images List 2</button>
+		<button type="button" class = "bFixed" id = "button_13" onclick=updateImagesList3(idTag3,idTag2)> Get Images List 3</button>
 	 	<button type="button" class = "bFixed" id = "button_7" onclick=genDay(tag4,dayVal,imageVals)>Show Days</button><br>
 	</form>
 
 	<form>
 	 	<label for="images"><span class = "fSpan">Images:</span></label>
 	  		<select name="id" class = "bFixed" id="caption_id2" onchange="imageVal = updateListVal('caption_id2')">
-	  			<option value="1">Image 1</option>
-	  			<option value="2">Image 2</option>
-	  			<option value="3">Image 3</option>
+	  			<option value="1">Default Image 1</option>
+	  			<option value="2">Default Image 2</option>
+	  			<option value="3">Default Image 3</option>
 	 		</select>
 	 	<button type="button" class="button bFixed" id = "button_6" onclick=getCaption(tag3,imageVal)>Show Image</button><br>
 	</form>

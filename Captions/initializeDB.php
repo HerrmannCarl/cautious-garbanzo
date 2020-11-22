@@ -95,7 +95,7 @@ if ($conn->query($sql) === TRUE) {
 
 ////Insert "captions" data into database
 //Get config data out of json for "captions"
-$json_string = file_get_contents("captiondb.json");
+$json_string = file_get_contents("UserData/captiondb.json");
 $decoded_json = json_decode($json_string, true);
 $decoded_data = $decoded_json["captions"];
 
@@ -122,7 +122,7 @@ $stmt->close();
 
 ////Insert "trips" data into database
 //Get config data out of json for "trips"
-$json_string = file_get_contents("captiondb.json");
+$json_string = file_get_contents("UserData/captiondb.json");
 $decoded_json = json_decode($json_string, true);
 $decoded_data = $decoded_json["trips"];
 
@@ -154,7 +154,7 @@ $stmt->close();
 
 ////Insert "days" data into database
 //Get config data out of json for "trips"
-$json_string = file_get_contents("captiondb.json");
+$json_string = file_get_contents("UserData/captiondb.json");
 $decoded_json = json_decode($json_string, true);
 $decoded_data = $decoded_json["days"];
 
