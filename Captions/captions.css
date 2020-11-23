@@ -34,6 +34,8 @@ span{
   border-radius:10px;
   border:1px solid grey;
   padding:4px;
+  max-width: 308px;
+  min-height: 270px;
   color:black;
   text-align:center;
   display:inline-block;
