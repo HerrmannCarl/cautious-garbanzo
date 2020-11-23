@@ -257,8 +257,8 @@ function updateDaysList2(sourceListID,destListID) {
 
 function updateDaysList3(tripsListID,daysListID,imagesListID){
   console.log("--running updateDaysList3")
-  updateDaysList(tripsListID,daysListID);
-  updateImagesList3(daysListID,imagesListID);
+  setTimeout(updateDaysList,1,tripsListID,daysListID);
+  setTimeout(updateImagesList3,120,daysListID,imagesListID);
 }
 
 function getTrips(destListID) {
@@ -291,8 +291,8 @@ function getTrips(destListID) {
 }
 
 function getTrips3(tripsListID,daysListID,imagesListID){
-  getTrips(tripsListID);
-  updateDaysList3(tripsListID,daysListID,imagesListID);
+  setTimeout(getTrips,1,tripsListID);
+  setTimeout(updateDaysList3,120,tripsListID,daysListID,imagesListID);
 }
 
 
