@@ -82,6 +82,7 @@ tdate VARCHAR(50) NOT NULL,
 startLocation VARCHAR(100) NOT NULL,
 finishLocation VARCHAR(100) NOT NULL,
 description VARCHAR(240) NOT NULL,
+header VARCHAR(240) NOT NULL,
 trip_id INT(6) DEFAULT NULL,
 photos VARCHAR(100) NOT NULL,
 create_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
@@ -156,11 +157,12 @@ $stmt->close();
 //Get config data out of json for "trips"
 $json_string = file_get_contents("UserData/captiondb.json");
 $decoded_json = json_decode($json_string, true);
+echo "Decoded json: " . $decoded_json .  "<br>\n";
 $decoded_data = $decoded_json["days"];
 
 // var_dump($decoded_data);
-$stmt = $conn->prepare("INSERT INTO Days (tdate, startLocation, finishLocation, description, trip_id, photos) VALUES (?, ?, ?, ?, ?, ?)");
-$stmt->bind_param("ssssis", $tdate, $startLocation, $finishLocation, $description, $trip_id, $photos);
+$stmt = $conn->prepare("INSERT INTO Days (tdate, startLocation, finishLocation, description, header, trip_id, photos) VALUES (?, ?, ?, ?, ?, ?, ?)");
+$stmt->bind_param("sssssis", $tdate, $startLocation, $finishLocation, $description, $header, $trip_id, $photos);
 
 // echo "-------<br>\n";
 // echo "Starting days insert <br>\n";
@@ -170,6 +172,7 @@ foreach ($decoded_data as $iter) {
   $startLocation = $iter["startLocation"];
   $finishLocation = $iter["finishLocation"];
   $description = $iter["description"];
+  $header = $iter["header"];
   $trip_id = $iter["tripID"];
   $photos = json_encode($iter["photos"]);
   $stmt->execute();

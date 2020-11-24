@@ -24,7 +24,7 @@ $stmt->execute();
 $result1 = $stmt->get_result();
 $row1 = $result1->fetch_assoc();
 
-$output = array("id"=>$row1["id"],"create_date"=>$row1["create_date"],"datecode"=>$row1["dateCode"],"location"=>$row1["location"],"days"=>$row1["days"]);
+$output = array("id"=>$row1["id"],"create_date"=>$row1["create_date"],"datecode"=>$row1["dateCode"],"location"=>$row1["location"],"days"=>$row1["days"],"description"=>$row1["description"]);
 $output_JSON = json_encode($output);
 echo $output_JSON;
 
