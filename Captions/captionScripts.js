@@ -307,20 +307,37 @@ function genDay(result_tag,dayVal,imageIDs){
 
   var new_str = "";
   var new_tags = [];
-  var description = "Description Pending"
-  new_str += "<div class = day>";
-  new_str += "<p>"+description+"</p>";
-  for (i=0;i<imageIDs.length;i++){
-    var current_tag = "image_"+imageIDs[i];
-    new_str +="<div id="+current_tag+' class = "imageContainer"> Temp text here </div>';//add div to string.
-    new_tags.push(current_tag);//add div tag to list, for later use. 
-  }
-  new_str += "</div>"
-  document.getElementById(result_tag).innerHTML=new_str;//Add divs to existing HTML page. 
+  var description = "Description Pending";
 
-  for (i=0;i<new_tags.length;i++){
-    var tag = new_tags[i];
-    var tag_id = imageIDs[i]
-    getCaption(tag,tag_id)
-  }
+  ///
+  ///
+  console.log("Generating the day");
+  console.log("Getting the day's update.");
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      var jsonResponse = JSON.parse(this.responseText);
+      description = jsonResponse.description;
+      header = jsonResponse.header;
+
+      new_str += "<div class = day>";
+      new_str += "<h>"+header+"</h>"
+      new_str += "<p>"+description+"</p>";
+      for (i=0;i<imageIDs.length;i++){
+        var current_tag = "image_"+imageIDs[i];
+        new_str +="<div id="+current_tag+' class = "imageContainer"> Temp text here </div>';//add div to string.
+        new_tags.push(current_tag);//add div tag to list, for later use. 
+      }
+      new_str += "</div>"
+      document.getElementById(result_tag).innerHTML=new_str;//Add divs to existing HTML page. 
+
+      for (i=0;i<new_tags.length;i++){
+        var tag = new_tags[i];
+        var tag_id = imageIDs[i]
+        getCaption(tag,tag_id)
+      }
+    }
+  }   
+  xhttp.open("GET", "imagesDays.php?id="+dayVal, true);
+  xhttp.send();
 }
