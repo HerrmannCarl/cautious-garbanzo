@@ -190,7 +190,7 @@ function updateImagesList2(sourceListID,destListID) {
 }
 
 function updateImagesList3(daysListID,imagesListID){
-  console.log("--running updateImageList3")
+  // console.log("--running updateImageList3")
   updateImagesList(daysListID,imagesListID);  
 }
 
@@ -256,6 +256,7 @@ function updateDaysList2(sourceListID,destListID) {
 }
 
 function updateDaysList3(tripsListID,daysListID,imagesListID){
+
   console.log("--running updateDaysList3")
   setTimeout(updateDaysList,1,tripsListID,daysListID);
   setTimeout(updateImagesList3,120,daysListID,imagesListID);
