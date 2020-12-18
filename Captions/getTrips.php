@@ -24,7 +24,7 @@ $daysList = array();
 if ($result1->num_rows > 0) {
   // output data of each row
   while($row = $result1->fetch_assoc()) {
-  	$output=array("id"=>$row["id"],"name"=>$row["name"]);
+  	$output=array("id"=>$row["id"],"name"=>$row["name"]); // only outputting "id" and "name" in list for now.
   	array_push($daysList,$output);
   }
 }
