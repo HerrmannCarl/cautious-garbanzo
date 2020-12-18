@@ -77,7 +77,6 @@ function getImageTree(){
   xhttp.send();
 }
 
-<<<<<<< HEAD
 function genSideMenu(){
   var tag_id = "side-menu-1"
   var parentElement = document.getElementById(tag_id);
@@ -101,20 +100,6 @@ function genSideMenu(){
 //   console.log("updateTripsWrapper function running");
 //   setTimeout(updateTripsList,1,tripsListID);
 // }
-=======
-function updateImagesList3(daysListID,imagesListID){
-  // console.log("--running updateImageList3")
-  updateImagesList(daysListID,imagesListID);  
-}
-
-function updateDaysList(sourceListID,destListID) {
-  var newElements = "";
-  var parentElement = document.getElementById(destListID);
-  var daysList=[1,2,3];
-  var trip_id;
-  var tmp_list = [];
-  trip_id = updateListVal(sourceListID);
->>>>>>> 9613a626607f55258e135a7cceee649ecc50495c
 
 // function tripsChange(){
 //   console.log("tripsChange function running");
@@ -192,36 +177,8 @@ function displayDay(result_tag,dayVal){
         new_str +="<div id="+current_tag+' class = "imageContainer"></div>';//add div to string.
         new_tags.push(current_tag);//add div tag to list, for later use. 
       }
-<<<<<<< HEAD
       new_str += "</div>"
       document.getElementById(result_tag).innerHTML=new_str;//Add divs to existing HTML page. 
-=======
-      document.getElementById(destListID).innerHTML = newElements //add options to target dropdown
-      dayVal = updateListVal(destListID)//update selection in target dropdown
-      dayVals = tmp_list;
-    }
-  }   
-  xhttp.open("GET", "getDaysList.php?id="+trip_id, true);
-  xhttp.send();
-}
-
-function updateDaysList3(tripsListID,daysListID,imagesListID){
-
-  console.log("--running updateDaysList3")
-  setTimeout(updateDaysList,1,tripsListID,daysListID);
-  setTimeout(updateImagesList3,120,daysListID,imagesListID);
-}
-
-function getTrips(destListID) {
-  var newElements = "";
-  var parentElement = document.getElementById(destListID);
-  var tripsList=[1,2,3];
-  var tmp_list = [];
-  // console.log("Here's the destListID: "+ destListID)
-  // console.log("Here's the parent of destListID: "+ parentElement)
-  parentElement = destListID
-  // console.log("After Replacement, Here's the parent of destListID: "+ parentElement)
->>>>>>> 9613a626607f55258e135a7cceee649ecc50495c
 
       for (i=0;i<new_tags.length;i++){
         var tag = new_tags[i];
