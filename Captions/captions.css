@@ -7,6 +7,26 @@
   text-align:left;
 }
 
+.side-menu{
+  font-family: Helvetica, sans-serif;
+  background-color:#D0C0F0;
+  padding:4px;
+  color:black;
+  float:left;
+  margin:2px;
+  border-radius: 5px
+}
+ .side-element{
+  margin:2px;
+  padding:4px;
+  border-radius: 4px;
+  width:140px;
+}
+
+.side-element:hover{
+  background-color:#C0B0E0;
+}
+
 .bFixed{
   width:130px;
 }
@@ -45,6 +65,7 @@ span{
 }
 
 .day{
+  margin:2px;
   border-radius:10px;
   border:1px solid grey;
   padding:4px;
@@ -58,6 +79,24 @@ span{
 
 .day p {
   font-size:14px;
+}
+
+.trip{
+  border-radius:10px;
+  display:inline-block;
+  padding:4px;
+  margin:4px;
+  max-width:80%;
+  border:1px solid grey;
+  background-color:#9999CC;
+}
+.trip h1 {
+  font-size:20px;
+}
+
+.dayContainer{
+  padding:1px
+  margin:1px;
 }
 
 .captionImage img {
@@ -77,14 +116,6 @@ span{
 
 body{
 	background-color: #DDDDFF;
-}
-
-.trip{
-  display:inline-block;
-  padding:4px;
-  width:80%;
-  border:1px solid grey;
-  background-color:lightblue;
 }
 
 .crop {

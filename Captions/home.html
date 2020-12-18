@@ -3,25 +3,47 @@
 <head>
 	<script src = captionScripts.js></script>
 	<html lang = "us-en">
-	<title>Bike Trips - Style 2 </title>
-	<link rel="stylesheet" href="captions.css">
+	<title>Bike Trips - Style 2, Rev 3 </title>
 	<style>
 	</style>
-
 </head>
-<body>
+
+<link rel="stylesheet" href="captions.css">
+<body onload="pageLoad()">
+
+<script>
+	var tag1 = "textHere1";
+	var tag2 = "textHere2";
+	var tag3 = "textHere3";
+	var tag4 = "textHere4";
+	var tag5 = "textHere5";
+	var side_tag = "side-menu-1";
+	var imagesListTag = "htmlImagesList";
+	var daysListTag   = "htmlDaysList";
+	var tripsListTag  = "htmlTripsList";
+	var caption_id="2";
+	var caption_ids=["1","2","3"];
+	var imageTree = [1,2,3]
+	var tripsDict = {};
+	var daysDict = {};
+	var tripsInfoDict = {};
+	var dayVal = 1; 
+	var imageVal= 1;
+	var tripVal = 1;
+	var imageVals = [1,2,3];
+	var dayVals = [1,2,3];
+	var tripVals = [1,2,3];
+</script>
 
 <div class = "menubar">
 	<a href = "../home.html">Main Home</a>
 	<a href = "home.html">Project Home</a>
+	<a href = "info.html">Project Info</a>
 </div>
+<div class = "side-menu" id = "side-menu-1"></div>
 
-<h1>Second Website</h1>
-<p>This website talks about the bike trips I've taken.  It's the second project; in additionto HTML/CSS, this one includes some JavaScript, PHP, and small SQL database. <bt></p>
-
-<a href = "dbInit.html">Initialize the DB</a><br>
-<a href = "CaptionDisplay.html">View the Captions</a>
-
+<div id=textHere1></div>
 
 </body>
 </html>
+
